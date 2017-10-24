@@ -1,0 +1,27 @@
+*{margin:0;padding:0;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-text-size-adjust:none;-webkit-user-select:none;-ms-user-select:none;user-select:none;font-family:Arial, "微软雅黑";}
+img{border:none;max-width:100%;vertical-align:middle;}
+body,p,form,input,button,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6{margin:0;padding:0;list-style:none;overflow-x:hidden}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+input,textarea{-webkit-user-select:text;-ms-user-select:text;user-select:text;-webkit-appearance:none;font-size:1em;line-height:1.5em;}
+table{border-collapse:collapse;}
+input,select,textarea{outline:none;border:none;background:none;}
+a{outline:0;cursor:pointer;}
+a:link,a:active{text-decoration:none;}
+a:visited{color: transparent; text-decoration:none;}
+a:hover{color:rgb(240, 140, 47);text-decoration:none;}
+a{text-decoration:none;-webkit-touch-callout:none;}
+em,i{font-style:normal;}
+li,ol{list-style:none;}
+html{font-size:10px;}
+:global .clear{clear:both;height:0;font-size:0;line-height:0;visibility:hidden; overflow:hidden;} 
+:global .fl{float:left;}
+:global .fr{float:right;}
+body{ margin:0 auto; min-width:320px;color:#666; padding-bottom:8%;background:#fcfcfc;height:100%;}
+ 
+@media screen and (max-width:320px){body,input,select{font-size:10px}}
+@media screen and (min-width:320px){body,input,select{font-size:11.25px}}
+@media screen and (min-width:400px){body,input,select{font-size:12.5px}}
+@media screen and (min-width:480px){body,input,select{font-size:13.75px}}
+@media screen and (min-width:560px){body,input,select{font-size:15px}}
+@media screen and (min-width:600px){body,input,select{font-size:16.25px}}
+@media screen and (min-width:640px){body,input,select{font-size:18px}}

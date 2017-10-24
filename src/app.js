@@ -4,14 +4,12 @@ import { AppContainer } from 'react-hot-loader'
 import { Provider } from 'react-redux'
 import App from 'views'
 import configerStore from './store'
+import './reset.css'
 import './app.css'
-
 
 const appEnter = document.createElement('div')
 document.body.appendChild(appEnter)
-
 const store = configerStore()
-
 function renderWithHotReload (RootElement) {
   render(
     <AppContainer>
@@ -24,7 +22,6 @@ function renderWithHotReload (RootElement) {
 }
 
 renderWithHotReload(App)
-
 if (module.hot) {
   module.hot.accept('./views/index', () => {
     const Root = require('./views').default

@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { actionCreator } from './actions'
 import Loading from 'components/Loading'
+import { actionCreator } from './actions'
 
 import styles from './style.less'
 

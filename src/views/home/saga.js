@@ -14,9 +14,9 @@ function *fetchUser (action) {
   }
 }
 
-function *mySaga () {
+function *homeSaga () {
   yield takeEvery(actionTypes.FETCHDATA, fetchUser)
 }
 
 
-export default mySaga
+export default homeSaga
