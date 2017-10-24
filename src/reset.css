@@ -8,7 +8,7 @@ input,select,textarea{outline:none;border:none;background:none;}
 a{outline:0;cursor:pointer;}
 a:link,a:active{text-decoration:none;}
 a:visited{color: transparent; text-decoration:none;}
-a:hover{color:rgb(240, 140, 47);text-decoration:none;}
+a:hover{color:#ffa42f;text-decoration:none;}
 a{text-decoration:none;-webkit-touch-callout:none;}
 em,i{font-style:normal;}
 li,ol{list-style:none;}
