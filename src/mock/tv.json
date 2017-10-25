@@ -1,0 +1,20 @@
+{
+	"h": {
+		"c": 0,
+		"e": "",
+		"t": 0.037925958633423,
+		"s": 1508844102
+	},
+	"c": {
+		"data": {
+			"status": 0,
+			"online_num": 0,
+			"reservation_num": 27161,
+			"title": "\u5b81\u5411\u4e1c:\u5982\u4f55\u7528\u7ba1\u7406\u5b66\u601d\u7ef4\u66f4\u597d\u5730\u5b66\u4e60",
+			"room_id": 124,
+			"intro": "\u665a8\u70b9\uff0c60\u5206\u949f\u7684\u6e05\u534e\u7ba1\u7406\u5b66\u8bfe\u76f4\u64ad\u8f85\u5bfc\u3002",
+			"id": 124,
+			"type": 0
+		}
+	}
+}

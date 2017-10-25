@@ -1,20 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require("extract-text-webpack-plugin")
-
-
-const cssOptions = {
-  modules: true,
-  localIdentName: '[hash:base64:5]',
-  importLoaders: 1,
-}
-
-const postcssOptions = {
-  plugins: loader => [
-    require('autoprefixer')({ browsers: ['last 3 versions'] }),
-  ],
-}
 
 const common = {
   // entry: {
@@ -31,6 +17,7 @@ const common = {
       components: path.join(__dirname, '../src/components'),
       views: path.join(__dirname, '../src/views'),
       utils: path.join(__dirname, '../src/utils'),
+      mock: path.join(__dirname, '../src/mock'),
     },
     extensions: ['.js', '.json', '.css', '.less', 'jsx'],
   },
@@ -42,29 +29,6 @@ const common = {
         exclude: /node_modules/,
         include: path.join(__dirname, '../src'),
         use: ['babel-loader?cacheDirectory=true'],
-      },
-      {
-        test: /\.css$/i,
-        exclude: /node_modules/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: [
-            { loader: 'css-loader', options: cssOptions },
-            { loader: 'postcss-loader', options: postcssOptions },
-          ]
-        })
-      },
-      {
-        test: /\.less$/i,
-        exclude: /node_modules/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: [
-            { loader: 'css-loader', options: cssOptions },
-            { loader: 'postcss-loader', options: postcssOptions },
-            'less-loader',
-          ]
-        })
       },
       {
         test: /\.(png|jpg|gif|JPG|GIF|PNG|BMP|bmp|JPEG|jpeg)$/i,
@@ -92,10 +56,6 @@ const common = {
     new HtmlWebpackPlugin({
       title: 'DeDao-Demo',
       template: path.join(__dirname, '../assets/template.html'),
-    }),
-    new ExtractTextPlugin({
-      filename: '[name].[contenthash:5].css',
-      allChunks: true
     }),
   ],
 }

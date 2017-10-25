@@ -1,0 +1,21 @@
+@import './theme/color.less' ;
+@import './theme/mixin.less';
+
+:global .iconfont {
+  font-size: 2.4rem;
+  width: 1em; height: 1em;
+  vertical-align: -0.15em;
+  color: white;
+  fill: currentColor;
+  overflow: hidden;
+  &.gray {
+    color: #666;
+  }
+  &.primary {
+    color: @primary
+  }
+}
+
+input,select,textarea {
+  border: 0.1rem solid #ccc;
+}

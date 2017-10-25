@@ -1,0 +1,89 @@
+{
+	"h": {
+		"c": 0,
+		"e": "",
+		"t": 0.09678316116333,
+		"s": 1508843056
+	},
+	"c": {
+		"list": [{
+			"lecturer": {
+				"id": 39,
+				"name": "张凯 · 速读高手",
+				"avatar": "https:\/\/piccdn.igetget.com\/img\/201710\/18\/201710181430309824461763.jpg",
+				"intro": "张凯，「每天听本书」资深撰稿人，解读过《光荣与梦想》、《伯罗奔尼撒战争》等近百本书。",
+				"is_deleted": "NO",
+				"ctime": "2017-10-18 14:31:16",
+				"utime": "2017-10-18 23:58:15",
+				"create_operator": "胡亮",
+				"update_operator": "胡亮",
+				"udt": "2017-10-18 23:58:15"
+			},
+			"id": 39,
+			"title": "怎样成为快速阅读的高手",
+			"sub_title": "张凯 · 速读高手",
+			"homepage_img": "https:\/\/piccdn.igetget.com\/img\/201710\/18\/201710181433366256878762.jpg",
+			"price": 9.99,
+			"member_count": 21935,
+			"lesson_count": 5,
+			"duration": 3608,
+			"duration_desc": "时长：1小时 \/ 5节课",
+			"is_buy": 0,
+			"log_type": "course",
+			"log_id": 39
+		}, {
+			"lecturer": {
+				"id": 12,
+				"name": "许岑 · 跨界学习高手",
+				"avatar": "https:\/\/piccdn.igetget.com\/img\/201707\/26\/201707261807596739216761.jpg",
+				"intro": "许岑，对幻灯片制作、指弹吉他、英语等技能都能快速掌握到专业级，并制作过相应教程。",
+				"is_deleted": "NO",
+				"ctime": "2017-07-26 18:08:26",
+				"utime": "2017-10-12 16:27:46",
+				"create_operator": "胡亮",
+				"update_operator": "胡亮",
+				"udt": "2017-10-12 16:27:46"
+			},
+			"id": 10,
+			"title": "如何成为有效学习的高手",
+			"sub_title": "许岑 · 跨界学习高手",
+			"homepage_img": "https:\/\/piccdn.igetget.com\/img\/201707\/26\/201707261811034592476354.jpg",
+			"price": 9.99,
+			"member_count": 127775,
+			"lesson_count": 8,
+			"duration": 6489,
+			"duration_desc": "时长：1小时48分 \/ 8节课",
+			"is_buy": 0,
+			"log_type": "course",
+			"log_id": 10
+		}, {
+			"lecturer": {
+				"id": 6,
+				"name": "郑伟 · 罗胖的声音训练师",
+				"avatar": "https:\/\/piccdn.igetget.com\/img\/201705\/15\/201705151745037461938585.jpg",
+				"intro": "郑伟，中国传媒大学博士，大学播音系老师。他给4万人做过语言表达培训，他也是罗胖的声音训练师。",
+				"is_deleted": "NO",
+				"ctime": "2017-05-15 17:45:31",
+				"utime": "2017-06-19 16:04:02",
+				"create_operator": "taoran",
+				"update_operator": "耿春如",
+				"udt": "2017-06-19 16:04:02"
+			},
+			"id": 6,
+			"title": "怎样让你的声音更有魅力",
+			"sub_title": "郑伟 · 罗胖的声音训练师",
+			"homepage_img": "https:\/\/piccdn.igetget.com\/img\/201706\/29\/201706291745209872419724.jpg",
+			"price": 9.99,
+			"member_count": 129087,
+			"lesson_count": 8,
+			"duration": 3700,
+			"duration_desc": "时长：1小时1分 \/ 8节课",
+			"is_buy": 0,
+			"log_type": "course",
+			"log_id": 6
+		}],
+		"isMore": 1,
+		"title": "精品课",
+		"rightTitle": "查看全部"
+	}
+}

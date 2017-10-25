@@ -5,10 +5,12 @@ import { Provider } from 'react-redux'
 import App from 'views'
 import configerStore from './store'
 import './reset.css'
-import './app.css'
+import './app.less'
+import './icon/iconfont'
 
-const appEnter = document.createElement('div')
-document.body.appendChild(appEnter)
+const appRoot = document.createElement('div')
+appRoot.classList.add('app-root')
+document.body.appendChild(appRoot)
 const store = configerStore()
 function renderWithHotReload (RootElement) {
   render(
@@ -17,7 +19,7 @@ function renderWithHotReload (RootElement) {
         <RootElement />
       </Provider>
     </AppContainer>,
-    appEnter
+    appRoot
   )
 }
 

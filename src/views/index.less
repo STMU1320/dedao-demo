@@ -1,8 +1,15 @@
+@import '../theme/mixin.less';
+
 .nav {
+  position: fixed;
+  bottom: 0;
+  z-index: 999;
+  width:100%;
   display: flex;
   margin: 0;
   padding: 1rem 0;
-  border-bottom: 0.01rem solid #ccc;
+  background-color: white;
+  border-top: @border-1px;
   li {
     flex: 1;
     text-align: center;

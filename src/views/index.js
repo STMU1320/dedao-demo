@@ -19,7 +19,7 @@ const createComponent = component => () => (
 
 const App = () => (
   <Router>
-    <div>
+    <div className="wrap">
       <ul className={styles.nav}>
         <li><Link to="/">首页</Link></li>
         <li><Link to="/player">播放页面</Link></li>
