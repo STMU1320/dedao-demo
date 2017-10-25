@@ -3,6 +3,18 @@ const webpack = require('webpack')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const merge = require('webpack-merge')
+const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const cssOptions = {
+  modules: true,
+  localIdentName: '[hash:base64:5]',
+  importLoaders: 1,
+}
+
+const postcssOptions = {
+  plugins: loader => [
+    require('autoprefixer')({ browsers: ['last 3 versions'] }),
+  ],
+}
 const common = require('./common')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 
