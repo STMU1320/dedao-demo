@@ -17,7 +17,7 @@ const common = {
       components: path.join(__dirname, '../src/components'),
       views: path.join(__dirname, '../src/views'),
       utils: path.join(__dirname, '../src/utils'),
-      mock: path.join(__dirname, '../src/mock'),
+      mock: path.join(__dirname, '../mock'),
     },
     extensions: ['.js', '.json', '.css', '.less', 'jsx'],
   },

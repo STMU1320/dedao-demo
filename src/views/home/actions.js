@@ -1,13 +1,13 @@
 export const actionTypes = {
-  FETCHDATA: 'home/FETCHDATA',
-  SETDATA: 'home/SETDATA',
+  fetchHeader: 'home/FETCHHEADER',
+  save: 'home/SAVE',
 }
 
 export const actionCreator = {
-  fetchData (data) {
-    return { type: actionTypes.FETCHDATA, data }
+  save (data) {
+    return { type: actionTypes.save, data }
   },
-  setData (data) {
-    return { type: actionTypes.SETDATA, data }
+  fetchHeader () {
+    return { type: actionTypes.fetchHeader }
   },
 }

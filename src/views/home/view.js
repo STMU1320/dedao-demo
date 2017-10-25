@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import ReactSwipe from 'react-swipe'
-import bannerData from 'mock/banner'
-import hotSearchData from 'mock/hotSearch'
 
 import Loading from 'components/Loading'
 import Icon from 'components/Icon'
@@ -16,7 +14,7 @@ const HeaderSearch = ({ onChange, data }) => {
   return (
     <div className={styles.header}>
       <SearchInput
-        placeholder={data.default_keyword.name}
+        placeholder={data.default_keyword && data.default_keyword.name}
         className={styles.headerLift}
         onChange={onChange}
       />
@@ -55,20 +53,17 @@ class Home extends Component {
       currentIndex: 0,
     }
   }
-  // setUserInfo () {
-  //   const { dispatch } = this.props
-  //   dispatch(actionCreator.setData({
-  //     name: 'test',
-  //     age: 100,
-  //   }))
-  // }
-  // getUserInfo () {
-  //   const { dispatch } = this.props
-  //   dispatch(actionCreator.fetchData({ id: 2 }))
-  // }
+  componentDidMount () {
+    this.fetchHeader()
+  }
+
+  fetchHeader () {
+    const { dispatch } = this.props
+    dispatch(actionCreator.fetchHeader())
+  }
 
   render () {
-    const { loading } = this.props
+    const { loading, banner, hotSearch } = this.props
     const { currentIndex } = this.state
     const swipeConfig = {
       startSlide: 0,
@@ -85,20 +80,20 @@ class Home extends Component {
     return loading
       ? <Loading />
       : <div className={styles.container}>
-        <HeaderSearch data={hotSearchData.c} />
-        <Banner list={bannerData.c.list} swipeConfig={swipeConfig} current={currentIndex} />
-        </div>
+        <HeaderSearch data={hotSearch} />
+        <Banner list={banner} swipeConfig={swipeConfig} current={currentIndex} />
+      </div>
   }
 }
 
 Home.propTypes = {
-  // name: PropTypes.string,
-  // age: PropTypes.number,
+  banner: PropTypes.array,
+  hotSearch: PropTypes.object,
   dispatch: PropTypes.func,
 }
 
-export default connect(({ home }) => ({
-  name: home.name,
-  age: home.age,
-  loading: home.loading,
+export default connect(({ home: { loading, banner, hotSearch } }) => ({
+  banner,
+  hotSearch,
+  loading,
 }))(Home)

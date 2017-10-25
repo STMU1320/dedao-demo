@@ -1,14 +1,13 @@
-import { request } from 'utils'
+import { request, config } from 'utils'
 
-export function getUserInfo (data) {
+export function getHotSearch () {
   return request({
-    url: 'http://localhost:8080/test.json',
-    data,
+    url: `${config.apiPrefix}getHotSearch`,
   })
 }
 
-export function test () {
+export function getBanner () {
   return request({
-    url: '/api/test',
+    url: `${config.apiPrefix}getBanner`,
   })
 }

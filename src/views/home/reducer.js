@@ -1,15 +1,15 @@
 import { actionTypes } from './actions'
 
 const initState = {
-  name: 'oop',
-  age: 2,
+  hotSearch: {},
+  banner: [],
   loading: false,
 }
 
-export default function reducer (state = initState, action) {
-  switch (action.type) {
-    case actionTypes.SETDATA:
-      return { ...state, ...action.data }
+export default function reducer (state = initState, { type, payload }) {
+  switch (type) {
+    case actionTypes.save:
+      return { ...state, ...payload }
     default:
       return state
   }
