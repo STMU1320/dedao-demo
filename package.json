@@ -6,9 +6,9 @@
     "dedao-demo": "dedao-demo"
   },
   "scripts": {
-    "start": "webpack-dev-server --config ./webpack/dev.js --color --progress --hot & npm run serve",
+    "start": "webpack-dev-server --config ./webpack/dev.js --color --progress --hot & npm run service",
     "build": "webpack --config ./webpack/build.js --color --progress",
-    "serve": "node --harmony ./mock/server.js"
+    "service": "node --harmony ./mock/service.js"
   },
   "keywords": [
     "react",

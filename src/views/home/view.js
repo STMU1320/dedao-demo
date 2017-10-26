@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import ReactSwipe from 'react-swipe'
+import { history } from 'utils'
 
 import Loading from 'components/Loading'
 import Icon from 'components/Icon'
