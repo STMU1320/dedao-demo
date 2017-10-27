@@ -1,0 +1,50 @@
+@import '../../theme/mixin.less';
+
+.searchComponent{
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  touch-action: none;
+  .header {
+    height: 4.6rem;
+    display: flex;
+    padding: 0 0.9rem;
+    align-items: center;
+    box-sizing: border-box;
+    .headerLift {
+      flex: 11;
+    }
+    a{
+      flex: 1;
+      text-align: right;
+      color: white;
+    }
+    &.dark {
+      input {
+        background-color: #eee;
+      }
+      a {
+        color: #666;
+      }
+    }
+  }
+  .content {
+    flex: 1;
+    padding: 0.9rem;
+    background-color: rgb(241, 241, 241); 
+    p {
+      padding-bottom: 1rem;
+    }
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      li {
+        padding: 0.5rem 1rem;
+        margin: 0 0.5rem 0.5rem 0;
+        background-color: #ccc;
+      }
+    }
+  }
+}

@@ -1,34 +1,21 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import ReactSwipe from 'react-swipe'
-import { history } from 'utils'
 
-import Loading from 'components/Loading'
-import Icon from 'components/Icon'
-import SearchInput from 'components/SearchInput'
+import ReactSwipe from 'react-swipe'
+import PureRenderMixin from 'react-addons-pure-render-mixin'
+import Search from 'components/Search'
+import Container from 'components/Container'
+// import Icon from 'components/Icon'
+// import { history } from 'utils'
 
 import { actionCreator } from './actions'
 import styles from './style.less'
 
-const HeaderSearch = ({ onChange, data }) => {
-  return (
-    <div className={styles.header}>
-      <SearchInput
-        placeholder={data.default_keyword && data.default_keyword.name}
-        className={styles.headerLift}
-        onChange={onChange}
-      />
-      <span>
-        <Icon type="#icon-xiazai" />
-      </span>
-    </div>
-  )
-}
 
-const Banner = ({ list, swipeConfig, current }) => {
+const Banner = ({ list, swipeConfig, current, getEle }) => {
   return (
-    <div className={styles.bannerWrap}>
+    <div className={styles.bannerWrap} ref={getEle}>
       <ReactSwipe
         className={styles.banner}
         swipeOptions={swipeConfig}
@@ -48,24 +35,36 @@ const Banner = ({ list, swipeConfig, current }) => {
 }
 
 class Home extends Component {
-  constructor (props) {
-    super(props)
+  constructor (...props) {
+    super(...props)
+    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
     this.state = {
       currentIndex: 0,
+      opacity: 0,
     }
+    this.getBanner = this.getBanner.bind(this)
   }
   componentDidMount () {
-    this.fetchHeader()
-  }
-
-  fetchHeader () {
     const { dispatch } = this.props
     dispatch(actionCreator.fetchHeader())
   }
+  getBanner (dom) {
+    this.banner = dom
+  }
+  handleScroll (top) {
+    this.setState({
+      ...this.state,
+      opacity: Math.round((top / this.banner.offsetHeight) * 100),
+    })
+  }
 
+  handleScrollend (value) {
+    const { dispatch } = this.props
+    dispatch(actionCreator.save({ scrollTop: value }))
+  }
   render () {
-    const { loading, banner, hotSearch } = this.props
-    const { currentIndex } = this.state
+    const { banner, hotSearch, scrollTop } = this.props
+    const { currentIndex, opacity } = this.state
     const swipeConfig = {
       startSlide: 0,
       continuous: true,
@@ -74,16 +73,25 @@ class Home extends Component {
       auto: 5000,
       callback: i => {
         this.setState({
+          ...this.state,
           currentIndex: i,
         })
       },
     }
-    return loading
-      ? <Loading />
-      : <div className={styles.container}>
-        <HeaderSearch data={hotSearch} />
-        <Banner list={banner} swipeConfig={swipeConfig} current={currentIndex} />
-      </div>
+    return (<Container
+      scrollTop={scrollTop}
+      onScroll={this.handleScroll.bind(this)}
+      onScrollend={this.handleScrollend.bind(this)}
+    >
+      <Search data={hotSearch} opacity={opacity} />
+      <Banner
+        getEle={this.getBanner}
+        list={banner}
+        swipeConfig={swipeConfig}
+        current={currentIndex} />
+      <div style={{ height: '300vh', background: '#eee' }}>test</div>
+      <div style={{ height: '0.2rem', background: 'red' }}></div>
+    </Container>)
   }
 }
 
@@ -91,10 +99,22 @@ Home.propTypes = {
   banner: PropTypes.array,
   hotSearch: PropTypes.object,
   dispatch: PropTypes.func,
+  scrollTop: PropTypes.number,
 }
 
-export default connect(({ home: { loading, banner, hotSearch } }) => ({
-  banner,
-  hotSearch,
-  loading,
-}))(Home)
+function mapStateToProps ({ home }) {
+  const {
+    loading,
+    banner,
+    hotSearch,
+    scrollTop,
+  } = home
+  return {
+    banner,
+    hotSearch,
+    loading,
+    scrollTop,
+  }
+}
+
+export default connect(mapStateToProps)(Home)

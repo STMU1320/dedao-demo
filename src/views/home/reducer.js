@@ -4,6 +4,7 @@ const initState = {
   hotSearch: {},
   banner: [],
   loading: false,
+  scrollTop: 0,
 }
 
 export default function reducer (state = initState, { type, payload }) {

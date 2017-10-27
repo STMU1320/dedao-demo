@@ -1,5 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
+import { config } from 'utils'
 
 import Icon from '../Icon'
 import styles from './style.less'
@@ -8,12 +9,21 @@ function SearchInput ({
   placeholder,
   value,
   onChange,
+  onBlur,
+  onFocus,
   className = '',
 }) {
+  const inputProps = {
+    placeholder,
+    value,
+    onChange,
+    onBlur,
+    onFocus,
+  }
   return (
     <div className={classNames(styles.searchInput, className)}>
-      <Icon type="#icon-search" className={styles.searchIcon} />
-      <input type="text" placeholder={placeholder} onChange={onChange} value={value} />
+      <Icon type={config.icon.search} className={styles.searchIcon} />
+      <input {...inputProps} />
     </div>
   )
 }

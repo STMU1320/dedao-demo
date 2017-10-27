@@ -4,8 +4,8 @@ export const actionTypes = {
 }
 
 export const actionCreator = {
-  save (data) {
-    return { type: actionTypes.save, data }
+  save (payload) {
+    return { type: actionTypes.save, payload }
   },
   fetchHeader () {
     return { type: actionTypes.fetchHeader }

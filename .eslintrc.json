@@ -17,7 +17,6 @@
             2,
             "always-multiline"
         ],
-        "max-len": 0,
         "linebreak-style": 0,
         "react/jsx-first-prop-new-line": 0,
         "space-before-function-paren": [
@@ -45,6 +44,8 @@
         "react/jsx-no-bind": 0,
         "jsx-a11y/href-no-hash": 0,
         "jsx-a11y/anchor-is-valid": 0,
+        "jsx-a11y/click-events-have-key-events": 0,
+        "react/jsx-closing-tag-location": 0,
         "no-unused-vars": [
             2,
             {
@@ -76,12 +77,8 @@
             "error",
             "as-needed"
         ],
-        "object-property-newline": [
-            "error",
-            {
-                "allowMultiplePropertiesPerLine": true
-            }
-        ]
+        "object-property-newline": 0,
+        "object-curly-newline": 0
     },
     "parser": "babel-eslint",
     "parserOptions": {

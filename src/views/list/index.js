@@ -3,7 +3,7 @@ import React from 'react'
 function List () {
   return (
     <div>
-     list-page-changed
+      list-page
     </div>
   )
 }
