@@ -14,10 +14,7 @@ class Container extends Component {
   componentDidMount () {
     const { scrollTop = 0 } = this.props
     window.addEventListener('scroll', this.handleWindowScroll, false)
-    if (scrollTop) {
-      document.documentElement.scrollTop = scrollTop
-      document.body.scrollTop = scrollTop
-    }
+    scrollTop && window.scrollTo(0, scrollTop)
   }
   componentWillUnmount () {
     window.removeEventListener('scroll', this.handleWindowScroll)

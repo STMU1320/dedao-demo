@@ -32,7 +32,7 @@ const App = () => (
         <Route path="/player" component={createComponent(Player)} />
         <Route path="/list" component={createComponent(List)} />
         <Route path="/error" component={createComponent(ErrorPage)} />
-        <Route path="/*" component={createComponent(NotFound)} />
+        <Route component={createComponent(NotFound)} />
       </Switch>
     </div>
   </Router>

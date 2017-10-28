@@ -3,3 +3,22 @@
 @shadow-1: 4px 4px 20px 0 rgba(0,0,0,0.01);
 @shadow-2: 4px 4px 40px 0 rgba(0,0,0,0.05);
 @border-1px: 0.1rem solid @border-color-base;
+
+.arrow-left {
+  position: absolute;
+  top: calc(50% - .3rem);
+  right: 0;
+  width: .6rem;
+  height: .6rem;
+  border: .2rem solid @text-light;
+  border-top: none;
+  border-left: none;
+  border-radius: .1rem; 
+  transform: rotate(-45deg);
+}
+
+.ellipsis{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

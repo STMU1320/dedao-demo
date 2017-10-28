@@ -1,40 +1,46 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import classNames from 'classnames'
 
-import ReactSwipe from 'react-swipe'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import Search from 'components/Search'
 import Container from 'components/Container'
-// import Icon from 'components/Icon'
+import Icon from 'components/Icon'
 // import { history } from 'utils'
 
+import Banner from './c/Banner'
+import NavBar from './c/NavBar'
 import { actionCreator } from './actions'
 import styles from './style.less'
 
-
-const Banner = ({ list, swipeConfig, current, getEle }) => {
+const Live = ({
+  data = {
+    title: '████████',
+    intro: '████████████████████',
+    reservation_num: 0,
+  },
+}) => {
   return (
-    <div className={styles.bannerWrap} ref={getEle}>
-      <ReactSwipe
-        className={styles.banner}
-        swipeOptions={swipeConfig}
-        key={list.length}
-      >
-        {list.map(item => (
-          <div className={styles.imgWrap} key={item.log_id}>
-            <img src={item.m_img} alt={item.m_title} />
-          </div>
-        ))}
-      </ReactSwipe>
-      <ul className={styles.pointer}>
-        {list.map((item, index) => <li key={item.log_id} className={current === index ? styles.active : ''} />)}
-      </ul>
-    </div>
+    <section className={styles.section}>
+      <h5><span style={{ display: 'flex', alignItems: 'center' }}><Icon type="#icon-video" className="primary" />{data.status ? '正在直播' : '未开始'}</span><span>{data.reservation_num}预约</span></h5>
+      <div className={styles.sectionContent}>
+        <h4>{data.title}</h4>
+        <p className={classNames('text-light', styles.intro)}>{data.intro}</p>
+      </div>
+    </section>
   )
 }
 
+
 class Home extends Component {
+  static propTypes = {
+    banner: PropTypes.array,
+    hotSearch: PropTypes.object,
+    dispatch: PropTypes.func,
+    scrollTop: PropTypes.number,
+  }
+
   constructor (...props) {
     super(...props)
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
@@ -89,17 +95,10 @@ class Home extends Component {
         list={banner}
         swipeConfig={swipeConfig}
         current={currentIndex} />
-      <div style={{ height: '300vh', background: '#eee' }}>test</div>
-      <div style={{ height: '0.2rem', background: 'red' }}></div>
+      <NavBar />
+      <Live />
     </Container>)
   }
-}
-
-Home.propTypes = {
-  banner: PropTypes.array,
-  hotSearch: PropTypes.object,
-  dispatch: PropTypes.func,
-  scrollTop: PropTypes.number,
 }
 
 function mapStateToProps ({ home }) {

@@ -33,11 +33,13 @@ class Search extends Component {
   }
 
   handleItemClick (e) {
-    const newState = {
-      ...this.state,
-      value: e.target.innerText,
+    if (e.target.nodeName === 'LI') {
+      const newState = {
+        ...this.state,
+        value: e.target.innerText,
+      }
+      this.setState(newState)
     }
-    this.setState(newState)
   }
 
   handleChange (e) {
@@ -82,9 +84,9 @@ class Search extends Component {
           <p>热门搜索</p>
           {
             data.hot_keyword_list && data.hot_keyword_list.length > 0 &&
-            <ul>
+            <ul onClick={this.handleItemClick.bind(this)}>
               { data.hot_keyword_list.map(item => (
-                <li key={item.id} onClick={this.handleItemClick.bind(this)}>
+                <li key={item.id}>
                   {item.name}
                 </li>
               ))}

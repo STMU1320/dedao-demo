@@ -5,13 +5,19 @@ body {
   padding-bottom: 4rem;
 }
 
+:global .text-light {
+  color: @text-light;
+}
+
 :global .iconfont {
   font-size: 2.4rem;
   width: 1em; height: 1em;
   vertical-align: -0.15em;
-  color: white;
   fill: currentColor;
   overflow: hidden;
+  &.white {
+    color: white;
+  }
   &.gray {
     color: #666;
   }

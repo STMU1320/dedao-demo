@@ -1,3 +1,6 @@
+@import '../../theme/color.less';
+@import '../../theme/mixin.less';
+
 .bannerWrap {
   position: relative;
   .banner {
@@ -33,4 +36,56 @@
     }
   }
 
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.9rem;
+  background-color: white;
+  li {
+    flex: 1;
+    & > a {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      height: 5rem;
+      color: @text-light;
+      i {
+        padding: 0.45rem;
+        border-radius: 50%;
+        color: white;
+      }
+    }
+  }
+}
+
+.section {
+  margin-top: 1rem;
+  background-color: white;
+  padding: 0.9rem;
+  h5 {
+    display: flex;
+    justify-content: space-between;
+    line-height: 2rem;
+    color: @text-light;
+    border-bottom: @border-1px;
+  }
+  .sectionContent {
+    position: relative;
+    padding-right: 2rem;
+    margin-top: .5rem;
+    * {
+      .ellipsis
+    }
+    .intro {
+      margin-top: .3rem;
+    }
+    &::after {
+      content: ' ';
+      display: block;
+      .arrow-left
+    }
+  }
 }
