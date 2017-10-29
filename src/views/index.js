@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import { Router, Route, Switch, Link } from 'react-router-dom'
+import { history } from 'utils'
 
 import Home from 'bundle-loader?lazy&name=home!./home/view'
 import Player from 'bundle-loader?lazy&name=player!./player'
@@ -20,7 +21,7 @@ const createComponent = component => () => (
 )
 
 const App = () => (
-  <Router>
+  <Router history={history} >
     <div className="wrap">
       <ul className={styles.nav}>
         <li><Link to="/">首页</Link></li>
