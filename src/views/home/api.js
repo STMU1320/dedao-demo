@@ -11,3 +11,8 @@ export function getBanner () {
     url: `${config.apiPrefix}getBanner`,
   })
 }
+export function getLive () {
+  return request({
+    url: `${config.apiPrefix}getLive`,
+  })
+}

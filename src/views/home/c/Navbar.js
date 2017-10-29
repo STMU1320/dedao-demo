@@ -42,7 +42,7 @@ const NavBar = ({
         <li key={item.route}>
           <Link to={item.route}>
             <i style={{ backgroundColor: `${item.bg}` }}>
-              <Icon type={item.icon} />
+              <Icon type={item.icon} className={styles.navIcon} />
             </i>
             {item.text}
           </Link>

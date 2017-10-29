@@ -23,7 +23,7 @@ const Live = ({
 }) => {
   return (
     <section className={styles.section}>
-      <h5><span style={{ display: 'flex', alignItems: 'center' }}><Icon type="#icon-video" className="primary" />{data.status ? '正在直播' : '未开始'}</span><span>{data.reservation_num}预约</span></h5>
+      <h5><span style={{ display: 'flex', alignItems: 'center' }}><Icon type="#icon-video" className="primary" />{data.status ? '正在直播' : '直播未开始'}</span><span>{data.reservation_num}预约</span></h5>
       <div className={styles.sectionContent}>
         <h4>{data.title}</h4>
         <p className={classNames('text-light', styles.intro)}>{data.intro}</p>
@@ -53,6 +53,7 @@ class Home extends Component {
   componentDidMount () {
     const { dispatch } = this.props
     dispatch(actionCreator.fetchHeader())
+    dispatch(actionCreator.fetchLive())
   }
   getBanner (dom) {
     this.banner = dom
@@ -69,7 +70,11 @@ class Home extends Component {
     dispatch(actionCreator.save({ scrollTop: value }))
   }
   render () {
-    const { banner, hotSearch, scrollTop } = this.props
+    const {
+      banner,
+      hotSearch,
+      scrollTop,
+      live, } = this.props
     const { currentIndex, opacity } = this.state
     const swipeConfig = {
       startSlide: 0,
@@ -96,21 +101,23 @@ class Home extends Component {
         swipeConfig={swipeConfig}
         current={currentIndex} />
       <NavBar />
-      <Live />
+      <Live data={live} />
     </Container>)
   }
 }
 
 function mapStateToProps ({ home }) {
   const {
-    loading,
     banner,
     hotSearch,
+    live,
+    loading,
     scrollTop,
   } = home
   return {
     banner,
     hotSearch,
+    live,
     loading,
     scrollTop,
   }

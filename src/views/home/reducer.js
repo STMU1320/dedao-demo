@@ -3,6 +3,7 @@ import { actionTypes } from './actions'
 const initState = {
   hotSearch: {},
   banner: [],
+  live: {},
   loading: false,
   scrollTop: 0,
 }

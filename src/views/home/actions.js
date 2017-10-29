@@ -1,6 +1,7 @@
 export const actionTypes = {
-  fetchHeader: 'home/FETCHHEADER',
-  save: 'home/SAVE',
+  fetchHeader: 'home/fetchHeader',
+  fetchLive: 'home/fetchLive',
+  save: 'home/save',
 }
 
 export const actionCreator = {
@@ -9,5 +10,8 @@ export const actionCreator = {
   },
   fetchHeader () {
     return { type: actionTypes.fetchHeader }
+  },
+  fetchLive () {
+    return { type: actionTypes.fetchLive }
   },
 }

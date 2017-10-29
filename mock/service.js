@@ -11,6 +11,9 @@ router.get('/api/getHotSearch', function *(next) {
 router.get('/api/getBanner', function *(next) {
   this.body = require('./banner.json')
 })
+router.get('/api/getLive', function *(next) {
+  this.body = require('./tv.json')
+})
 
 router.post('/api/post', koaBody, function *(next) {
   this.body = JSON.stringify(this.request.body)

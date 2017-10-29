@@ -4,7 +4,7 @@ body,p,form,input,button,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6{margin:0;padding:0;
 h1 {font-size: 4rem; line-height: 5.6rem;}
 h2 {font-size: 3rem; line-height: 4rem;}
 h3 {font-size: 2.2rem; line-height: 3rem;}
-h4 {font-size: 1.4rem; line-height: 2.2rem;}
+h4 {font-size: 1.4rem; font-weight: normal; line-height: 2.2rem;}
 h5,h6 {font-size: 1rem; line-height: 1.4rem;}
 input,textarea{-webkit-user-select:text;-ms-user-select:text;user-select:text;-webkit-appearance:none;font-size:1em;line-height:1.5em;}
 table{border-collapse:collapse;}

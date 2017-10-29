@@ -48,14 +48,25 @@
     & > a {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       align-items: center;
-      height: 5rem;
       color: @text-light;
       i {
-        padding: 0.45rem;
+        width: 2.4rem;
+        height: 2.4rem;
+        margin-bottom: .3rem;
+        position: relative;
         border-radius: 50%;
         color: white;
+      }
+      .navIcon {
+        position: absolute;
+        width: .6em;
+        height: .6em;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
       }
     }
   }
@@ -78,9 +89,6 @@
     margin-top: .5rem;
     * {
       .ellipsis
-    }
-    .intro {
-      margin-top: .3rem;
     }
     &::after {
       content: ' ';
