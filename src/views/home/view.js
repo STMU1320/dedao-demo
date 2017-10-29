@@ -1,42 +1,29 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import classNames from 'classnames'
 
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import Search from 'components/Search'
 import Container from 'components/Container'
-import Icon from 'components/Icon'
+import { Section } from 'components/Section'
+// import Icon from 'components/Icon'
 // import { history } from 'utils'
 
 import Banner from './c/Banner'
 import NavBar from './c/NavBar'
+import FreeBody from './c/FreeBody'
+import FreeHeader from './c/FreeHeader'
+import Live from './c/Live'
 import { actionCreator } from './actions'
-import styles from './style.less'
-
-const Live = ({
-  data = {
-    title: '████████',
-    intro: '████████████████████',
-    reservation_num: 0,
-  },
-}) => {
-  return (
-    <section className={styles.section}>
-      <h5><span style={{ display: 'flex', alignItems: 'center' }}><Icon type="#icon-video" className="primary" />{data.status ? '正在直播' : '直播未开始'}</span><span>{data.reservation_num}预约</span></h5>
-      <div className={styles.sectionContent}>
-        <h4>{data.title}</h4>
-        <p className={classNames('text-light', styles.intro)}>{data.intro}</p>
-      </div>
-    </section>
-  )
-}
+// import styles from './style.less'
 
 
 class Home extends Component {
   static propTypes = {
     banner: PropTypes.array,
     hotSearch: PropTypes.object,
+    live: PropTypes.object,
+    free: PropTypes.object,
     dispatch: PropTypes.func,
     scrollTop: PropTypes.number,
   }
@@ -54,6 +41,7 @@ class Home extends Component {
     const { dispatch } = this.props
     dispatch(actionCreator.fetchHeader())
     dispatch(actionCreator.fetchLive())
+    dispatch(actionCreator.fetchFree())
   }
   getBanner (dom) {
     this.banner = dom
@@ -73,8 +61,9 @@ class Home extends Component {
     const {
       banner,
       hotSearch,
+      free,
       scrollTop,
-      live, } = this.props
+      live } = this.props
     const { currentIndex, opacity } = this.state
     const swipeConfig = {
       startSlide: 0,
@@ -89,6 +78,10 @@ class Home extends Component {
         })
       },
     }
+    const freeProps = {
+      Header: <FreeHeader name={free.name} />,
+      Body: <FreeBody list={free.list} />,
+    }
     return (<Container
       scrollTop={scrollTop}
       onScroll={this.handleScroll.bind(this)}
@@ -102,6 +95,7 @@ class Home extends Component {
         current={currentIndex} />
       <NavBar />
       <Live data={live} />
+      <Section {...freeProps} />
     </Container>)
   }
 }
@@ -111,6 +105,7 @@ function mapStateToProps ({ home }) {
     banner,
     hotSearch,
     live,
+    free,
     loading,
     scrollTop,
   } = home
@@ -118,6 +113,7 @@ function mapStateToProps ({ home }) {
     banner,
     hotSearch,
     live,
+    free,
     loading,
     scrollTop,
   }

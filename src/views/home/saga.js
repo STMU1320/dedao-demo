@@ -28,9 +28,22 @@ function *getLiveData () {
   }
 }
 
+function *getFreeData () {
+  try {
+    yield put({ type: actionTypes.save, data: { loading: true } })
+    const { c } = yield call(api.getFree)
+    yield put({ type: actionTypes.save, payload: { free: c } })
+  } catch (e) {
+    history.push('error')
+  } finally {
+    yield put({ type: actionTypes.save, data: { loading: false } })
+  }
+}
+
 function *homeSaga () {
   yield takeEvery(actionTypes.fetchHeader, getHeaderData)
   yield takeEvery(actionTypes.fetchLive, getLiveData)
+  yield takeEvery(actionTypes.fetchFree, getFreeData)
 }
 
 

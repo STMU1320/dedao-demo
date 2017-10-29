@@ -4,16 +4,19 @@
 @shadow-2: 4px 4px 40px 0 rgba(0,0,0,0.05);
 @border-1px: 0.1rem solid @border-color-base;
 
-.arrow-left {
+.arrow-right {
   position: absolute;
-  top: calc(50% - .3rem);
-  right: 0;
+  display: block;
+  top: 0;
+  bottom: 0;
+  right: .3rem;
+  margin: auto;
   width: .6rem;
   height: .6rem;
-  border: .2rem solid @text-light;
+  border: .1rem solid @text-light;
   border-top: none;
   border-left: none;
-  border-radius: .1rem; 
+  border-radius: .2rem; 
   transform: rotate(-45deg);
 }
 
@@ -21,4 +24,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.sectionBase {
+  margin-top: 1rem;
+  background-color: white;
+  padding: 0.9rem;
 }

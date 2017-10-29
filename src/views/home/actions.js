@@ -1,6 +1,7 @@
 export const actionTypes = {
   fetchHeader: 'home/fetchHeader',
   fetchLive: 'home/fetchLive',
+  fetchFree: 'home/fetchFree',
   save: 'home/save',
 }
 
@@ -13,5 +14,8 @@ export const actionCreator = {
   },
   fetchLive () {
     return { type: actionTypes.fetchLive }
+  },
+  fetchFree () {
+    return { type: actionTypes.fetchFree }
   },
 }

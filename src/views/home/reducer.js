@@ -4,6 +4,7 @@ const initState = {
   hotSearch: {},
   banner: [],
   live: {},
+  free: {},
   loading: false,
   scrollTop: 0,
 }

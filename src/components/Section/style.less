@@ -1,0 +1,21 @@
+@import '../../theme/mixin.less';
+@import '../../theme/color.less';
+
+.section {
+  .sectionBase;
+  .sectionTitle {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0.45rem;
+    margin-top: 0.45rem;
+    .right {
+      position: relative;
+      padding-right: 1.2rem;
+      color: @text-light;
+      &::after{
+        content: ' ';
+        .arrow-right;
+      }
+    }
+  }
+}

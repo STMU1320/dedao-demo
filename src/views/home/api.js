@@ -16,3 +16,8 @@ export function getLive () {
     url: `${config.apiPrefix}getLive`,
   })
 }
+export function getFree () {
+  return request({
+    url: `${config.apiPrefix}getFree`,
+  })
+}
