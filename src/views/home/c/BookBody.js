@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header } from 'components/section'
+import { Header } from 'components/Section'
 import { currency, timeFormat } from 'utils'
 import styles from '../style.less'
 
