@@ -12,7 +12,7 @@ function FreeBody ({
       {list.length > 0 ?
           list.map((item, index) => (
             <div className={styles.bodyItem} key={item.id || `freebody${index}`}>
-              {item.title && <Header data={{ name: item.title, right: item.rightTitle }} />}
+              {item.title && <Header data={{ name: item.title, img: item.avatar, right: item.rightTitle }} />}
               {item.list && item.list.length > 0 && item.list.map(ii => (
                 <p className={styles.detailItem} key={ii.alias_id}>
                   <Icon type={config.icon.play} />

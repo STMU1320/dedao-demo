@@ -14,8 +14,9 @@ import NavBar from './c/NavBar'
 import FreeBody from './c/FreeBody'
 import FreeHeader from './c/FreeHeader'
 import Live from './c/Live'
+import BookBody from './c/BookBody'
 import { actionCreator } from './actions'
-// import styles from './style.less'
+import styles from './style.less'
 
 
 class Home extends Component {
@@ -24,6 +25,7 @@ class Home extends Component {
     hotSearch: PropTypes.object,
     live: PropTypes.object,
     free: PropTypes.object,
+    bookRadio: PropTypes.object,
     dispatch: PropTypes.func,
     scrollTop: PropTypes.number,
   }
@@ -35,21 +37,27 @@ class Home extends Component {
       currentIndex: 0,
       opacity: 0,
     }
-    this.getBanner = this.getBanner.bind(this)
+    this.getBannerDom = this.getBannerDom.bind(this)
+    this.getFirstPageData = this.getFirstPageData.bind(this)
   }
   componentDidMount () {
+    this.getFirstPageData()
+  }
+
+  getFirstPageData () {
     const { dispatch } = this.props
     dispatch(actionCreator.fetchHeader())
     dispatch(actionCreator.fetchLive())
     dispatch(actionCreator.fetchFree())
+    dispatch(actionCreator.fetchBookRadio())
   }
-  getBanner (dom) {
+  getBannerDom (dom) {
     this.banner = dom
   }
   handleScroll (top) {
     this.setState({
       ...this.state,
-      opacity: Math.round((top / this.banner.offsetHeight) * 100),
+      opacity: Math.round((top / (this.banner.offsetHeight - 45)) * 100),
     })
   }
 
@@ -62,6 +70,7 @@ class Home extends Component {
       banner,
       hotSearch,
       free,
+      bookRadio,
       scrollTop,
       live } = this.props
     const { currentIndex, opacity } = this.state
@@ -82,6 +91,13 @@ class Home extends Component {
       Header: <FreeHeader name={free.name} />,
       Body: <FreeBody list={free.list} />,
     }
+
+    const bookRadioProps = {
+      header: { name: bookRadio.title, right: '查看全部' },
+      Body: <BookBody data={bookRadio.data} name={bookRadio.sub_title} />,
+      Footer: <div className={styles.bookFooter}>{bookRadio.data && bookRadio.data.adv_words}</div>,
+    }
+
     return (<Container
       scrollTop={scrollTop}
       onScroll={this.handleScroll.bind(this)}
@@ -89,13 +105,14 @@ class Home extends Component {
     >
       <Search data={hotSearch} opacity={opacity} />
       <Banner
-        getEle={this.getBanner}
+        getEle={this.getBannerDom}
         list={banner}
         swipeConfig={swipeConfig}
         current={currentIndex} />
       <NavBar />
       <Live data={live} />
       <Section {...freeProps} />
+      <Section {...bookRadioProps} />
     </Container>)
   }
 }
@@ -106,6 +123,7 @@ function mapStateToProps ({ home }) {
     hotSearch,
     live,
     free,
+    bookRadio,
     loading,
     scrollTop,
   } = home
@@ -114,6 +132,7 @@ function mapStateToProps ({ home }) {
     hotSearch,
     live,
     free,
+    bookRadio,
     loading,
     scrollTop,
   }

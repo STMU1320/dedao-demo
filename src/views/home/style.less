@@ -132,3 +132,33 @@
     border-radius: 3rem;
   }
 }
+
+.bookContent{
+  display: flex;
+  margin: .9rem 0;
+  dt {
+    flex: 3;
+  }
+  dd{
+    flex: 9;
+    margin-left: .9rem;
+    position: relative;
+    .intro {
+      .mellipsis(4);
+      color: @text-light;
+    }
+    .contentFooter {
+      display: flex;
+      justify-content: space-between;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+  }
+}
+
+.bookFooter{
+  background-color: #e7cb83;
+  padding: 1rem;
+  text-align: center;
+}

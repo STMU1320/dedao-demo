@@ -2,6 +2,7 @@ export const actionTypes = {
   fetchHeader: 'home/fetchHeader',
   fetchLive: 'home/fetchLive',
   fetchFree: 'home/fetchFree',
+  fetchBookRadio: 'home/fetchBookRadio',
   save: 'home/save',
 }
 
@@ -17,5 +18,8 @@ export const actionCreator = {
   },
   fetchFree () {
     return { type: actionTypes.fetchFree }
+  },
+  fetchBookRadio () {
+    return { type: actionTypes.fetchBookRadio }
   },
 }

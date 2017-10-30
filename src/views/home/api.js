@@ -21,3 +21,8 @@ export function getFree () {
     url: `${config.apiPrefix}getFree`,
   })
 }
+export function getBookRadio () {
+  return request({
+    url: `${config.apiPrefix}getBookRadio`,
+  })
+}

@@ -17,6 +17,9 @@ router.get('/api/getLive', function *(next) {
 router.get('/api/getFree', function *(next) {
   this.body = require('./free.json')
 })
+router.get('/api/getBookRadio', function *(next) {
+  this.body = require('./tingshu.json')
+})
 
 router.post('/api/post', koaBody, function *(next) {
   this.body = JSON.stringify(this.request.body)

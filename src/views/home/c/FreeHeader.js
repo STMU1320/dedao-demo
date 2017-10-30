@@ -10,7 +10,7 @@ function Header ({
     <h4 className={styles.freeHeader}>
       <span>{name}</span>
       <a className={styles.palyBtn}>
-        <Icon type={config.icon.play2}/>
+        <Icon type={config.icon.play2} />
         连续播放
       </a>
     </h4>

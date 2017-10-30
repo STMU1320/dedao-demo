@@ -39,11 +39,23 @@ function *getFreeData () {
     yield put({ type: actionTypes.save, data: { loading: false } })
   }
 }
+function *getBookRadio () {
+  try {
+    yield put({ type: actionTypes.save, data: { loading: true } })
+    const { c } = yield call(api.getBookRadio)
+    yield put({ type: actionTypes.save, payload: { bookRadio: c.data } })
+  } catch (e) {
+    history.push('error')
+  } finally {
+    yield put({ type: actionTypes.save, data: { loading: false } })
+  }
+}
 
 function *homeSaga () {
   yield takeEvery(actionTypes.fetchHeader, getHeaderData)
   yield takeEvery(actionTypes.fetchLive, getLiveData)
   yield takeEvery(actionTypes.fetchFree, getFreeData)
+  yield takeEvery(actionTypes.fetchBookRadio, getBookRadio)
 }
 
 

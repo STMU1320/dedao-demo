@@ -26,6 +26,13 @@
   white-space: nowrap;
 }
 
+.mellipsis (@line:3) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: @line;
+  overflow: hidden;
+}
+
 .sectionBase {
   margin-top: 1rem;
   background-color: white;

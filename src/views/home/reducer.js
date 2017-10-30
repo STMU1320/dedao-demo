@@ -5,6 +5,7 @@ const initState = {
   banner: [],
   live: {},
   free: {},
+  bookRadio: {},
   loading: false,
   scrollTop: 0,
 }
