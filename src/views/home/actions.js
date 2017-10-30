@@ -3,6 +3,7 @@ export const actionTypes = {
   fetchLive: 'home/fetchLive',
   fetchFree: 'home/fetchFree',
   fetchBookRadio: 'home/fetchBookRadio',
+  fetchLastArea: 'home/fetchLastArea',
   save: 'home/save',
 }
 
@@ -21,5 +22,8 @@ export const actionCreator = {
   },
   fetchBookRadio () {
     return { type: actionTypes.fetchBookRadio }
+  },
+  fetchLastArea () {
+    return { type: actionTypes.fetchLastArea }
   },
 }

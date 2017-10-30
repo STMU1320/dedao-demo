@@ -6,6 +6,7 @@ const initState = {
   live: {},
   free: {},
   bookRadio: {},
+  lastArea: [],
   loading: false,
   scrollTop: 0,
 }

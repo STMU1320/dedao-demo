@@ -9,12 +9,15 @@ import { Section } from 'components/Section'
 // import Icon from 'components/Icon'
 // import { history } from 'utils'
 
+// import lastAreaData from 'mock/lastArea.json'
+
 import Banner from './c/Banner'
 import NavBar from './c/NavBar'
 import FreeBody from './c/FreeBody'
 import FreeHeader from './c/FreeHeader'
 import Live from './c/Live'
 import BookBody from './c/BookBody'
+import LastArea from './c/LastArea'
 import { actionCreator } from './actions'
 import styles from './style.less'
 
@@ -26,6 +29,7 @@ class Home extends Component {
     live: PropTypes.object,
     free: PropTypes.object,
     bookRadio: PropTypes.object,
+    lastArea: PropTypes.array,
     dispatch: PropTypes.func,
     scrollTop: PropTypes.number,
   }
@@ -55,10 +59,18 @@ class Home extends Component {
     this.banner = dom
   }
   handleScroll (top) {
-    this.setState({
-      ...this.state,
-      opacity: Math.round((top / (this.banner.offsetHeight - 45)) * 100),
-    })
+    const { dispatch, lastArea } = this.props
+    const bHeight = this.banner.offsetHeight
+    if (top < bHeight) {
+      this.setState({
+        ...this.state,
+        opacity: Math.round((top / (bHeight - 45)) * 100),
+      })
+    }
+
+    if (top > 350 && !lastArea.length) {
+      dispatch(actionCreator.fetchLastArea())
+    }
   }
 
   handleScrollend (value) {
@@ -71,6 +83,7 @@ class Home extends Component {
       hotSearch,
       free,
       bookRadio,
+      lastArea,
       scrollTop,
       live } = this.props
     const { currentIndex, opacity } = this.state
@@ -113,6 +126,7 @@ class Home extends Component {
       <Live data={live} />
       <Section {...freeProps} />
       <Section {...bookRadioProps} />
+      <LastArea list={lastArea} />
     </Container>)
   }
 }
@@ -124,6 +138,7 @@ function mapStateToProps ({ home }) {
     live,
     free,
     bookRadio,
+    lastArea,
     loading,
     scrollTop,
   } = home
@@ -133,6 +148,7 @@ function mapStateToProps ({ home }) {
     live,
     free,
     bookRadio,
+    lastArea,
     loading,
     scrollTop,
   }

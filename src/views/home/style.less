@@ -133,26 +133,29 @@
   }
 }
 
-.bookContent{
-  display: flex;
-  margin: .9rem 0;
-  dt {
-    flex: 3;
-  }
-  dd{
-    flex: 9;
-    margin-left: .9rem;
-    position: relative;
-    .intro {
-      .mellipsis(4);
-      color: @text-light;
+.bookItem{
+  border-top: @border-1px;
+  .bookContent{
+    display: flex;
+    margin: .9rem 0;
+    dt {
+      flex: 3;
     }
-    .contentFooter {
-      display: flex;
-      justify-content: space-between;
-      position: absolute;
-      bottom: 0;
-      width: 100%;
+    dd{
+      flex: 9;
+      margin-left: .9rem;
+      position: relative;
+      .intro {
+        .mellipsis(4);
+        color: @text-light;
+      }
+      .contentFooter {
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+      }
     }
   }
 }
@@ -162,3 +165,22 @@
   padding: 1rem;
   text-align: center;
 }
+
+.lastArea{
+  margin: 0.9rem 0;
+  background-color: white;
+  column-count: 2;
+  display: flex;
+  flex-wrap: wrap;
+  li {
+    padding: 0.9rem;
+    box-sizing: border-box;
+    width: 50%;
+    a {
+      border-radius: .5rem;
+      overflow: hidden;
+      display: block;
+    }
+  }
+}
+

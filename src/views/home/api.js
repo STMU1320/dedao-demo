@@ -26,3 +26,8 @@ export function getBookRadio () {
     url: `${config.apiPrefix}getBookRadio`,
   })
 }
+export function getLastArea () {
+  return request({
+    url: `${config.apiPrefix}getLastArea`,
+  })
+}
