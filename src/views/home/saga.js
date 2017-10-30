@@ -3,63 +3,35 @@ import { history } from 'utils'
 import { actionTypes } from './actions'
 import * as api from './api'
 
-function *getHeaderData () {
+function *getData (apipath, reduxFiled, response) {
   try {
     yield put({ type: actionTypes.save, data: { loading: true } })
-    const [b, h] = yield [call(api.getBanner), call(api.getHotSearch)]
-    yield put({ type: actionTypes.save, payload: { banner: b.c.list } })
-    yield put({ type: actionTypes.save, payload: { hotSearch: h.c } })
+    const { c } = yield call(api[apipath])
+    yield put({ type: actionTypes.save, payload: { [reduxFiled]: !response ? c : c[response] } })
   } catch (e) {
     history.push('error')
   } finally {
     yield put({ type: actionTypes.save, data: { loading: false } })
   }
+}
+
+function *getHeaderData () {
+  yield getData('getHotSearch', 'hotSearch')
+  yield getData('getBanner', 'banner', 'list')
 }
 
 function *getLiveData () {
-  try {
-    yield put({ type: actionTypes.save, data: { loading: true } })
-    const { c } = yield call(api.getLive)
-    yield put({ type: actionTypes.save, payload: { live: c.data } })
-  } catch (e) {
-    history.push('error')
-  } finally {
-    yield put({ type: actionTypes.save, data: { loading: false } })
-  }
+  yield getData('getLive', 'live', 'data')
 }
 
 function *getFreeData () {
-  try {
-    yield put({ type: actionTypes.save, data: { loading: true } })
-    const { c } = yield call(api.getFree)
-    yield put({ type: actionTypes.save, payload: { free: c } })
-  } catch (e) {
-    history.push('error')
-  } finally {
-    yield put({ type: actionTypes.save, data: { loading: false } })
-  }
+  yield getData('getFree', 'free')
 }
 function *getBookRadio () {
-  try {
-    yield put({ type: actionTypes.save, data: { loading: true } })
-    const { c } = yield call(api.getBookRadio)
-    yield put({ type: actionTypes.save, payload: { bookRadio: c.data } })
-  } catch (e) {
-    history.push('error')
-  } finally {
-    yield put({ type: actionTypes.save, data: { loading: false } })
-  }
+  yield getData('getBookRadio', 'bookRadio', 'data')
 }
 function *getLastArea () {
-  try {
-    yield put({ type: actionTypes.save, data: { loading: true } })
-    const { c } = yield call(api.getLastArea)
-    yield put({ type: actionTypes.save, payload: { lastArea: c.list } })
-  } catch (e) {
-    history.push('error')
-  } finally {
-    yield put({ type: actionTypes.save, data: { loading: false } })
-  }
+  yield getData('getLastArea', 'lastArea', 'list')
 }
 
 function *homeSaga () {
