@@ -1,19 +1,17 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import classNames from 'classnames'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
 import { config, history } from 'utils'
 import SearchInput from '../SearchInput'
 import Icon from '../Icon'
 import styles from './style.less'
 
-class Search extends Component {
+class Search extends PureComponent {
   static handlePrevent (e) {
     e.preventDefault()
   }
 
   constructor (...arg) {
     super(...arg)
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
     this.state = {
       fold: true,
       value: '',

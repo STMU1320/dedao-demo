@@ -37,4 +37,15 @@ function timeFormat (day = '天', hour = '小时', minute = '分', second = '秒
   }
 }
 
-export { request, lodash, classnames, config, history, currency, number, timeFormat }
+function isEmpty (value) {
+  if (value == null || value === '') {
+    return true
+  } else if (Array.isArray(value)) {
+    return value.length === 0
+  } else if (typeof value === 'object') {
+    return Object.keys(value).length === 0
+  }
+  return false
+}
+
+export { request, lodash, classnames, config, history, currency, number, timeFormat, isEmpty }

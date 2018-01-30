@@ -9,6 +9,7 @@
             "never"
         ],
         "no-console": 0,
+        "react/sort-comp": 0,
         "import/no-webpack-loader-syntax": 0,
         "import/extensions": 0,
         "import/no-unresolved": 0,

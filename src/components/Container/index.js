@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
 import Loading from '../Loading'
 
 let timer = null
@@ -8,7 +7,6 @@ let lastScrollTop = 0
 class Container extends Component {
   constructor (...arg) {
     super(...arg)
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
     this.handleWindowScroll = this.handleWindowScroll.bind(this)
   }
   componentDidMount () {

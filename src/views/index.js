@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { Router, Route, Switch, Link } from 'react-router-dom'
-import { history } from 'utils'
+import { history, isEmpty } from 'utils'
 
-import Home from 'bundle-loader?lazy&name=home!./home/view'
+import Home from 'bundle-loader?lazy&name=home!./home/index'
 import Player from 'bundle-loader?lazy&name=player!./player'
 import List from 'bundle-loader?lazy&name=list!./list'
 import ErrorPage from 'bundle-loader?lazy&name=error!./error'
@@ -13,15 +13,55 @@ import Loading from 'components/Loading'
 import Bundle from './Bundle'
 import styles from './index.less'
 
-
-const createComponent = component => () => (
+const createComponent = component => props => (
   <Bundle load={component}>
-    {Component => (Component ? <Component /> : <Loading />)}
+    {Component => (Component ? <Component {...props} /> : <Loading />)}
   </Bundle>
 )
 
+const DynamicRouter = ({ Component, routes, ...attr }) => (
+  <Route
+    {...attr}
+    render={props => {
+      return isEmpty(routes)
+        ? <Component {...props} />
+        : <Component {...props}>
+          <Switch>
+            {routes.map(route => (
+              <DynamicRouter key={route.path} {...route} />
+              ))}
+          </Switch>
+        </Component>
+    }}
+  />
+)
+
+const appRoutes = [
+  {
+    path: '/',
+    Component: createComponent(Home),
+    exact: true,
+  },
+  {
+    path: '/player',
+    Component: createComponent(Player),
+  },
+  {
+    path: '/list',
+    Component: createComponent(List),
+  },
+  {
+    path: '/error',
+    Component: createComponent(ErrorPage),
+  },
+  {
+    path: '*',
+    Component: createComponent(NotFound),
+  },
+]
+
 const App = () => (
-  <Router history={history} >
+  <Router history={history}>
     <div className="wrap">
       <ul className={styles.nav}>
         <li><Link to="/">首页</Link></li>
@@ -29,11 +69,7 @@ const App = () => (
         <li><Link to="/list">列表页面</Link></li>
       </ul>
       <Switch>
-        <Route exact path="/" component={createComponent(Home)} />
-        <Route path="/player" component={createComponent(Player)} />
-        <Route path="/list" component={createComponent(List)} />
-        <Route path="/error" component={createComponent(ErrorPage)} />
-        <Route component={createComponent(NotFound)} />
+        {appRoutes.map(route => <DynamicRouter key={route.path} {...route} />)}
       </Switch>
     </div>
   </Router>

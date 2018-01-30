@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header } from 'components/Section'
+import { Section } from 'components'
 import Loading from 'components/Loading'
 import { currency, timeFormat } from 'utils'
 import styles from '../style.less'
@@ -7,7 +7,7 @@ import styles from '../style.less'
 function BookBody ({ data = {}, name = '' }) {
   return Object.keys(data).length > 0
     ? <div className={styles.bookItem}>
-      <Header data={{ name }} />
+      <Section.Header data={{ name }} />
       <dl className={styles.bookContent}>
         <dt><img src={data.audio_icon} alt="cover" /></dt>
         <dd>

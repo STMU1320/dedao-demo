@@ -1,15 +1,16 @@
 import React from 'react'
-import styles from './style.less'
 import DHeader from './Header'
+import styles from './style.less'
 
 function Section ({
   header,
+  getEle,
   Header,
   Body,
   Footer,
 }) {
   return (
-    <section className={styles.section}>
+    <section ref={getEle} className={styles.section}>
       { Header || <DHeader data={header} /> }
       { Body && Body}
       { Footer && Footer}
@@ -17,7 +18,6 @@ function Section ({
   )
 }
 
-export {
-  DHeader as Header,
-  Section,
-}
+Section.Header = DHeader
+
+export default Section

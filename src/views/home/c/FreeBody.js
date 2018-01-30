@@ -1,8 +1,10 @@
 import React from 'react'
-import { Header } from 'components/Section'
+import { Section } from 'components'
 import Icon from 'components/Icon'
 import { config } from 'utils'
 import styles from '../style.less'
+
+const { Header } = Section
 
 function FreeBody ({
   list = [],

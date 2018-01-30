@@ -13,10 +13,8 @@ const common = {
   //   chunkFilename: "[name].[chunkHash:5].js",
   // },
   resolve: {
+    modules: ['./node_modules', './src'],
     alias: {
-      components: path.join(__dirname, '../src/components'),
-      views: path.join(__dirname, '../src/views'),
-      utils: path.join(__dirname, '../src/utils'),
       mock: path.join(__dirname, '../mock'),
     },
     extensions: ['.js', '.json', '.css', '.less', 'jsx'],

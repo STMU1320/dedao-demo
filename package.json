@@ -6,7 +6,8 @@
     "dedao-demo": "dedao-demo"
   },
   "scripts": {
-    "start": "webpack-dev-server --config ./webpack/dev.js --color --progress --hot & npm run service",
+    "start": "npm-run-all --parallel service build:dev",
+    "build:dev": "webpack-dev-server --config ./webpack/dev.js --color --progress --hot",
     "build": "webpack --config ./webpack/build.js --color --progress",
     "service": "node --harmony ./mock/service.js"
   },
@@ -41,6 +42,7 @@
     "koa-router": "^5.4.0",
     "less": "^3.0.0-alpha.3",
     "less-loader": "^4.0.5",
+    "npm-run-all": "^4.1.2",
     "postcss-loader": "^2.0.8",
     "react-addons-perf": "^15.4.2",
     "react-hot-loader": "^3.1.1",
@@ -58,15 +60,13 @@
     "bundle-loader": "^0.5.5",
     "classnames": "^2.2.5",
     "lodash": "^4.17.4",
-    "prop-types": "^15.6.0",
-    "react": "^16.0.0",
-    "react-addons-pure-render-mixin": "^15.6.2",
-    "react-dom": "^16.0.0",
+    "react": "16.2.0",
+    "react-dom": "16.2.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-swipe": "^5.1.0",
-    "redux": "^3.7.2",
-    "redux-saga": "^0.16.0",
+    "redux": "3.7.2",
+    "redux-saga": "^1.0.0-beta.0",
     "swipe-js-iso": "^2.0.4"
   }
 }
