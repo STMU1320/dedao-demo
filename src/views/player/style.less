@@ -1,0 +1,62 @@
+@import '../../theme/color.less';
+@import '../../theme/mixin.less';
+
+.playBar {
+  position: fixed;
+  width: 100%;
+  padding: 0 .5rem;
+  box-sizing: border-box;
+  z-index: 98;
+
+  &.mini {
+    bottom: 4rem;
+    background-color: @bg-gray;
+    color: @text-dark;
+    height: 4rem;
+    overflow: hidden;
+    .miniContent {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      justify-content: space-between;
+      .audioInfo {
+        flex: 1;
+        display: flex;
+        padding: 0 .5rem;
+        align-items: center;
+        img {
+          display: block;
+          width: 3rem;
+          height: 3rem;
+          margin-right: 1rem;
+          border-radius: .2rem;
+          object-fit: cover;
+          background-color: #666;
+        }
+        div {
+          flex: 1;
+          overflow: hidden;
+        }
+        h4, p {
+          .ellipsis;
+        }
+        h4 {
+          font-weight: bold;
+        }
+      }
+      :global {
+        .iconfont {
+          padding: .5rem;
+          color: @text-light;
+        }
+      }
+    }
+  }
+
+  &.playerPage {
+    height: 100vh;
+    top: 0;
+    background-color: white;
+    z-index: 100;
+  }
+}

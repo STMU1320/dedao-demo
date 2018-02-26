@@ -5,5 +5,6 @@ import Loading from './Loading'
 import Search from './Search'
 import SearchInput from './SearchInput'
 import Section from './Section'
+import PlayButton from './PlayButton'
 
-export { Container, Icon, Layout, Loading, Search, SearchInput, Section }
+export { Container, Icon, Layout, Loading, Search, SearchInput, Section, PlayButton }

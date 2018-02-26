@@ -1,6 +1,19 @@
+@keyframes rotate
+{
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .wrap {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 60%;
+  .icon {
+    animation: rotate 3.6s linear infinite;
+  }
 }

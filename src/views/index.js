@@ -3,7 +3,7 @@ import React from 'react'
 import { Router, Route, Switch, Link } from 'react-router-dom'
 import { history, isEmpty } from 'utils'
 
-import Home from 'bundle-loader?lazy&name=home!./home/index'
+import Home from 'bundle-loader?lazy&name=home!./home'
 import Player from 'bundle-loader?lazy&name=player!./player'
 import List from 'bundle-loader?lazy&name=list!./list'
 import ErrorPage from 'bundle-loader?lazy&name=error!./error'
@@ -60,6 +60,8 @@ const appRoutes = [
   },
 ]
 
+const PlayBar = createComponent(Player)
+
 const App = () => (
   <Router history={history}>
     <div className="wrap">
@@ -68,6 +70,7 @@ const App = () => (
         <li><Link to="/player">播放页面</Link></li>
         <li><Link to="/list">列表页面</Link></li>
       </ul>
+      <PlayBar />
       <Switch>
         {appRoutes.map(route => <DynamicRouter key={route.path} {...route} />)}
       </Switch>

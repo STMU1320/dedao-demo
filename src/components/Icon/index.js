@@ -1,9 +1,9 @@
 import React from 'react'
 import classNames from 'classnames'
 
-function Icon ({ type = '#icon-xiazai', className = '' }) {
+function Icon ({ type = '#icon-xiazai', className = '', style }) {
   return (
-    <svg className={classNames('iconfont', className)} aria-hidden="true">
+    <svg className={classNames('iconfont', className)} style={style} aria-hidden="true">
       <use xlinkHref={type} />
     </svg>
   )

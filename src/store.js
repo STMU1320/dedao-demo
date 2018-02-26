@@ -1,8 +1,7 @@
 import { createStore, compose, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 // import Perf from 'react-addons-perf'
-import rootReducer from './reducers'
-import rootSagas from './sagas'
+import { reducers, sagas } from './model'
 
 const win = window
 // win.Perf = Perf
@@ -17,11 +16,11 @@ const storeEnhancers = compose(
 
 
 export default function configureStore (initialState = {}) {
-  const store = createStore(rootReducer, initialState, storeEnhancers)
-  sagaMiddleware.run(rootSagas)
+  const store = createStore(reducers, initialState, storeEnhancers)
+  sagaMiddleware.run(sagas)
   if (module.hot) {
     module.hot.accept(() => {
-      const nextRootReducer = require('./reducers')
+      const nextRootReducer = require('./model').reducers
       store.replaceReducer(nextRootReducer)
     })
   }
