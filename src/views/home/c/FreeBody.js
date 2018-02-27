@@ -8,6 +8,7 @@ const { Header } = Section
 function FreeBody ({
   list = [],
   playing = {},
+  progress,
   onItemClick,
 }) {
   return (
@@ -20,7 +21,7 @@ function FreeBody ({
                 const playStatus = playing.status === config.PLAYING && playing.id === ii.id
                 return (
                   <p className={styles.detailItem} key={ii.id} onClick={onItemClick.bind(null, !playStatus, ii)}>
-                    <PlayButton status={playStatus} style={{ marginRight: '.5rem' }} />
+                    <PlayButton status={playStatus} progress={playing.id === ii.id ? progress : 0} style={{ marginRight: '.5rem' }} />
                     {ii.audio_detail.title}
                   </p>
                 )

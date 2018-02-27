@@ -92,6 +92,7 @@ class Home extends Component {
       live,
       audio,
       palyStatus,
+      progress,
     } = this.props
     const { currentIndex, opacity } = this.state
     const swipeConfig = {
@@ -109,7 +110,7 @@ class Home extends Component {
     }
     const freeProps = {
       Header: <FreeHeader name={free.name} />,
-      Body: <FreeBody list={free.list} onItemClick={this.handleAudioToggle} playing={{ status: palyStatus, ...audio }} />,
+      Body: <FreeBody list={free.list} onItemClick={this.handleAudioToggle} progress={progress} playing={{ status: palyStatus, ...audio }} />,
     }
 
     const bookRadioProps = {
@@ -146,7 +147,7 @@ class Home extends Component {
 }
 
 function mapStateToProps ({ home, player }) {
-  const { audio, status } = player
+  const { audio, status, progress } = player
   const {
     banner,
     hotSearch,
@@ -168,6 +169,7 @@ function mapStateToProps ({ home, player }) {
     scrollTop,
     audio,
     palyStatus: status,
+    progress,
   }
 }
 
