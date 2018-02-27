@@ -8,11 +8,11 @@ import PlayerPage from './c/PlayerPage'
 import styles from './style.less'
 
 class PlayBar extends React.Component {
-  videoEle = null
-  timer = null
+  videoEle = null;
+  timer = null;
   getvideoEle = ele => {
     this.videoEle = ele
-  }
+  };
 
   componentWillReceiveProps (nextProps) {
     const { status, audio } = nextProps
@@ -37,24 +37,25 @@ class PlayBar extends React.Component {
     const { dispatch } = this.props
     if (this.timer) clearInterval(this.timer)
     this.videoEle.play()
-    dispatch({ type: 'player/save', payload: { status: config.PLAYING } })
+    dispatch({ type: 'player/save', payload: { status: config.PLAYING, visible: true } })
     this.timer = setInterval(() => {
-      const progress = +(this.videoEle.currentTime / this.videoEle.duration).toFixed(2) * 100
+      const progress =
+        +(this.videoEle.currentTime / this.videoEle.duration).toFixed(2) * 100
       dispatch({ type: 'player/save', payload: { progress: Math.ceil(progress) } })
     }, 1000)
-  }
+  };
 
   handlePause = () => {
     if (this.timer) clearInterval(this.timer)
     const { dispatch } = this.props
     this.videoEle.pause()
     dispatch({ type: 'player/save', payload: { status: config.PAUSE } })
-  }
+  };
 
   handlePlayEnded = () => {
     const { dispatch } = this.props
     dispatch({ type: 'player/save', payload: { status: config.STOP } })
-  }
+  };
 
   handlePlayToggle = () => {
     const { audio } = this.props
@@ -65,17 +66,40 @@ class PlayBar extends React.Component {
         this.handlePause()
       }
     }
+  };
+
+  handleHidePlayer = () => {
+    const { dispatch } = this.props
+    dispatch({ type: 'player/save', payload: { visible: false } })
+  }
+  handlePanelChange = () => {
+    const { dispatch, mini } = this.props
+    dispatch({ type: 'player/save', payload: { mini: !mini } })
   }
 
   render () {
     const { mini, audio, loading, status, visible, progress } = this.props
-    const playerProps = { loading, status, audio, progress }
-    return (<div className={classNames(styles.playBar, mini ? styles.mini : styles.playerPage)} style={{ display: visible ? 'block' : 'none' }}>
-      {
-        mini ? <Mini {...playerProps} onClick={this.handlePlayToggle} /> : <PlayerPage {...playerProps} />
-      }
-      <video ref={this.getvideoEle} height="0" width="0" onEnded={this.handlePlayEnded} onError={this.handlePlayEnded} />
-    </div>)
+    const playerProps = { loading, status, audio, progress, onPanelChange: this.handlePanelChange }
+    return (
+      <div
+        className={classNames(
+          styles.playBar,
+          mini ? styles.mini : styles.playerPage
+        )}
+        style={{ display: visible ? 'block' : 'none' }}
+      >
+        {mini
+          ? <Mini {...playerProps} onClick={this.handlePlayToggle} onClose={this.handleHidePlayer} />
+          : <PlayerPage {...playerProps} />}
+        <video
+          ref={this.getvideoEle}
+          height="0"
+          width="0"
+          onEnded={this.handlePlayEnded}
+          onError={this.handlePlayEnded}
+        />
+      </div>
+    )
   }
 }
 

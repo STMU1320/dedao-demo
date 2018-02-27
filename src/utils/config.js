@@ -12,5 +12,6 @@ export const icon = {
   close: '#icon-close',
   arrow: '#icon-enter',
   pause: '#icon-pause',
+  down: '#icon-down',
 }
 

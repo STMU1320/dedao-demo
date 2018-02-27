@@ -7,5 +7,6 @@ import SearchInput from './SearchInput'
 import Section from './Section'
 import PlayButton from './PlayButton'
 import Progress from './Progress'
+import Button from './Button'
 
-export { Container, Icon, Layout, Loading, Search, SearchInput, Section, PlayButton, Progress }
+export { Container, Icon, Layout, Loading, Search, SearchInput, Section, PlayButton, Progress, Button }

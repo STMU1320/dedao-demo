@@ -7,6 +7,8 @@ export default function Mini ({
   loading,
   audio,
   onClick,
+  onClose,
+  onPanelChange,
   status,
   progress,
 }) {
@@ -14,7 +16,7 @@ export default function Mini ({
   const { detail } = audio
   return (
     <div className={styles.miniContent}>
-      <Icon type={config.icon.close} />
+      <Icon type={config.icon.close} onClick={onClose} />
       <div className={styles.audioInfo}>
         <img src={detail.icon} alt="cover" />
         <div>
@@ -22,7 +24,7 @@ export default function Mini ({
           <p>{ detail.share_title }</p>
         </div>
       </div>
-      <Icon type={config.icon.arrow} style={{ transform: 'rotate(-90deg)' }} />
+      <Icon type={config.icon.arrow} onClick={onPanelChange} style={{ transform: 'rotate(-90deg)' }} />
       {
         loading ? <Loading tip="" /> : <PlayButton status={statusIcon} progress={progress} onClick={onClick} />
        }

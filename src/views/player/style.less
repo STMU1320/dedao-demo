@@ -4,7 +4,6 @@
 .playBar {
   position: fixed;
   width: 100%;
-  padding: 0 .5rem;
   box-sizing: border-box;
   z-index: 98;
 
@@ -22,7 +21,7 @@
       .audioInfo {
         flex: 1;
         display: flex;
-        padding: 0 .5rem;
+        padding: 0 1rem;
         align-items: center;
         img {
           display: block;
@@ -49,6 +48,7 @@
         .iconfont {
           padding: .5rem;
           color: @text-light;
+          z-index: 2;
         }
       }
     }
@@ -58,6 +58,49 @@
     height: 100vh;
     top: 0;
     background-color: white;
-    z-index: 100;
+    z-index: 1000;
+  }
+  .cover {
+    position: relative;
+    height: 70vh;
+    text-align: center;
+    color: white;
+    padding: 1rem;
+    background-color: #ddd;
+    overflow: hidden;
+   
+    .bgImg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      filter: blur(50px) brightness(60%);
+    }
+    .arrow {
+      font-size: 4rem;
+      transform: rotate(90deg);
+    }
+    .audioInfo {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+      img {
+        width: 42%;
+        height: 42%;
+        border-radius: .5rem;
+        overflow: hidden;
+        margin-bottom: 1rem;
+      }
+      h4 {
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+  .panel {
+    height: 30vh;
   }
 }

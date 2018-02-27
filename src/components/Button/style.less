@@ -1,0 +1,20 @@
+@import '../../theme/color.less';
+
+.button {
+  background: none;
+  font-size: 1rem;
+  padding: .3rem 1rem;
+  color: white;
+  border-radius: 1.2rem;
+  .icon {
+    margin-left: .2rem;
+    font-size: inherit;
+  }
+  &.ghost {
+    border: 1px solid rgba(255, 255, 255, .3);
+  }
+  &.primary {
+    background-color: @blue;
+    border: 1px solid lighten(@blue, 10%);
+  }
+}
