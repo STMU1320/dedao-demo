@@ -67,6 +67,7 @@
     color: white;
     padding: 1rem;
     background-color: #ddd;
+    box-sizing: border-box;
     overflow: hidden;
    
     .bgImg {
@@ -102,5 +103,82 @@
   }
   .panel {
     height: 30vh;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    .playBtns {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex: 1;
+      padding: 0 2rem;
+      .progress {
+        position: absolute;
+        z-index: 9;
+        top: 0;
+        left: 0;
+        display: flex;
+        span {
+          position: absolute;
+          top: -.7rem;
+          padding: .2rem .5rem;
+          border-radius: 0.7rem;
+          background-color: rgba(0, 0, 0, .8);
+          color: white;
+          font-size: 1rem;
+        }
+      }
+      .changeBtn {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        color: @text-light;
+        span {
+          transform: scale(.6);
+        }
+        :global{
+          .iconfont {
+            position: absolute;
+          }
+        }
+        &.back {
+          :global{
+            .iconfont {
+              transform: matrix(-1,0,0,1,0,0)
+            }
+          }
+        }
+      }
+
+      .circle {
+        display: flex;
+        width: 3rem;
+        height: 3rem;
+        border: 0.1rem solid @border-color-dark;
+        border-radius: 50%;
+        align-items: center;
+        justify-content: center;
+        color: @text-primary;
+
+        &.large {
+          width: 5rem;
+          height: 5rem;
+          color: @primary;
+        }
+      }
+    }
+
+    .bottomNav {
+      display: flex;
+      padding: .5rem;
+      justify-content: space-between;
+      align-items: center;
+      border-top: @border-1px;
+      background-color: #fcfcfc;
+    }
   }
 }

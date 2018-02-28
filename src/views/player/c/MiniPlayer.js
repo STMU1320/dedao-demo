@@ -13,7 +13,7 @@ export default function Mini ({
   progress,
 }) {
   const statusIcon = status === config.PLAYING
-  const { detail } = audio
+  const detail = audio.audio_detail || {}
   return (
     <div className={styles.miniContent}>
       <Icon type={config.icon.close} onClick={onClose} />

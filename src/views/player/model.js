@@ -4,20 +4,14 @@ import { config } from 'utils'
 export default {
   namespace: 'player',
   state: {
-    audio: {
-      detail: {
-        title: '未知',
-        share_title: '无',
-        icon: '',
-        mp3_play_url: '',
-      },
-      id: null,
-    },
+    audio: null,
+    audioList: [],
     status: config.STOP,
     progress: 0,
     mini: true,
     loading: false,
     visible: true,
+    infinite: false,
   },
 
   effects: {

@@ -20,7 +20,7 @@ function FreeBody ({
               {!isEmpty(item.audio_list) && item.audio_list.map(ii => {
                 const playStatus = playing.status === config.PLAYING && playing.id === ii.id
                 return (
-                  <p className={styles.detailItem} key={ii.id} onClick={onItemClick.bind(null, !playStatus, ii)}>
+                  <p className={styles.detailItem} key={ii.id} onClick={onItemClick.bind(null, !playStatus, ii.id, item.audio_list)}>
                     <PlayButton status={playStatus} progress={playing.id === ii.id ? progress : 0} style={{ marginRight: '.5rem' }} />
                     {ii.audio_detail.title}
                   </p>

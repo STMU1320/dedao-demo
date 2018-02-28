@@ -1,7 +1,7 @@
 import React from 'react'
 import { config } from 'utils'
 import Icon from '../Icon'
-import Progress from '../progress'
+import Progress from '../Progress'
 import styles from './style.less'
 
 function PlayBtn ({ progress = 0, status, onClick, ...otherProps }) {

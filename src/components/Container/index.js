@@ -23,13 +23,13 @@ class Container extends Component {
 
   handleWindowScroll () {
     const scrollTop = document.body.scrollTop || document.documentElement.scrollTop
-    const { onScrollend, onScroll } = this.props
+    const { onScrollEnd, onScroll } = this.props
     lastScrollTop = scrollTop
     onScroll && onScroll(scrollTop)
     // end事件需要更好模拟
-    if (!timer && onScrollend) {
+    if (!timer && onScrollEnd) {
       timer = setTimeout(() => {
-        onScrollend(lastScrollTop)
+        onScrollEnd(lastScrollTop)
         timer && clearTimeout(timer)
         timer = null
       }, 500)

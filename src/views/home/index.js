@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Search, Container, Section } from 'components'
-import { config } from 'utils'
+import { config, isEmpty } from 'utils'
 
 import Banner from './c/Banner'
 import NavBar from './c/NavBar'
@@ -69,16 +69,35 @@ class Home extends Component {
     }
   }
 
-  handleScrollend (value) {
+  handleScrollEnd (value) {
     const { dispatch } = this.props
     dispatch({ type: 'home/save', payload: { scrollTop: value } })
   }
 
-  handleAudioToggle = (play, _audio) => {
-    const { dispatch } = this.props
-    const status = play ? config.PLAYING : config.PAUSE
-    const audio = { id: _audio.id, detail: _audio.audio_detail }
-    dispatch({ type: 'player/save', payload: { status, audio } })
+  handleAudioToggle = (newPlay, _audio, _audioList) => {
+    const { dispatch, progress } = this.props
+    let nextStatus = config.PAUSE
+    let nextAudio = _audio
+    let nextProgress = progress
+    if (newPlay) {
+      nextStatus = config.PLAYING
+      nextProgress = 0
+    }
+    dispatch({ type: 'player/save', payload: { status: nextStatus, audio: nextAudio, audioList: _audioList, progress: nextProgress } })
+  }
+
+  handleInfinitePlay = () => {
+    const { dispatch, audio, audioList, free, infinitePlay, palyStatus } = this.props
+    const status = infinitePlay && palyStatus === config.PLAYING ? config.PAUSE : config.PLAYING
+    const payload = { infinite: !infinitePlay, status }
+    if (isEmpty(audioList)) {
+      const crtAudioList = free.list[0].audio_list
+      payload.audioList = crtAudioList
+      payload.audio = crtAudioList[0].id
+    } else if (isEmpty(audio)) {
+      payload.audio = audioList[0].id
+    }
+    dispatch({ type: 'player/save', payload })
   }
 
   render () {
@@ -91,8 +110,10 @@ class Home extends Component {
       scrollTop,
       live,
       audio,
+      audioList,
       palyStatus,
       progress,
+      infinitePlay,
     } = this.props
     const { currentIndex, opacity } = this.state
     const swipeConfig = {
@@ -108,9 +129,11 @@ class Home extends Component {
         })
       },
     }
+
+    const currentAudio = audioList.find(a => a.id === audio)
     const freeProps = {
-      Header: <FreeHeader name={free.name} />,
-      Body: <FreeBody list={free.list} onItemClick={this.handleAudioToggle} progress={progress} playing={{ status: palyStatus, ...audio }} />,
+      Header: <FreeHeader name={free.name} status={infinitePlay && palyStatus === config.PLAYING} onPlay={this.handleInfinitePlay} />,
+      Body: <FreeBody list={free.list} onItemClick={this.handleAudioToggle} progress={progress} playing={{ status: palyStatus, ...currentAudio }} />,
     }
 
     const bookRadioProps = {
@@ -127,7 +150,7 @@ class Home extends Component {
       <Container
         scrollTop={scrollTop}
         onScroll={this.handleScroll.bind(this)}
-        onScrollend={this.handleScrollend.bind(this)}
+        onScrollEnd={this.handleScrollEnd.bind(this)}
       >
         <Search data={hotSearch} opacity={opacity} />
         <Banner
@@ -147,7 +170,7 @@ class Home extends Component {
 }
 
 function mapStateToProps ({ home, player }) {
-  const { audio, status, progress } = player
+  const { audio, audioList, status, progress, infinite } = player
   const {
     banner,
     hotSearch,
@@ -168,7 +191,9 @@ function mapStateToProps ({ home, player }) {
     loading,
     scrollTop,
     audio,
+    audioList,
     palyStatus: status,
+    infinitePlay: infinite,
     progress,
   }
 }
