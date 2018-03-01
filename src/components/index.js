@@ -8,5 +8,6 @@ import Section from './Section'
 import PlayButton from './PlayButton'
 import Progress from './Progress'
 import Button from './Button'
+import TipPage from './TipPage'
 
-export { Container, Icon, Layout, Loading, Search, SearchInput, Section, PlayButton, Progress, Button }
+export { Container, Icon, Layout, Loading, Search, SearchInput, Section, PlayButton, Progress, Button, TipPage }

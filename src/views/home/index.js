@@ -54,7 +54,7 @@ class Home extends Component {
     this.sectionHook = dom
   };
   handleScroll (top) {
-    const { dispatch, lastArea } = this.props
+    const { dispatch, lastArea, playerVisible, scrollTop } = this.props
     const bHeight = this.banner.offsetHeight
     if (top < bHeight) {
       this.setState({
@@ -66,6 +66,11 @@ class Home extends Component {
       top > this.sectionHook.offsetTop - window.innerHeight && !lastArea.length
     ) {
       dispatch({ type: 'home/getLastArea' })
+    }
+    if (top - scrollTop > 50 && playerVisible) {
+      dispatch({ type: 'player/save', payload: { visible: false } })
+    } else if (top - scrollTop < -50 && !playerVisible) {
+      dispatch({ type: 'player/save', payload: { visible: true } })
     }
   }
 
@@ -87,8 +92,8 @@ class Home extends Component {
   }
 
   handleInfinitePlay = () => {
-    const { dispatch, audio, audioList, free, infinitePlay, palyStatus } = this.props
-    const status = infinitePlay && palyStatus === config.PLAYING ? config.PAUSE : config.PLAYING
+    const { dispatch, audio, audioList, free, infinitePlay, playStatus } = this.props
+    const status = infinitePlay && playStatus === config.PLAYING ? config.PAUSE : config.PLAYING
     const payload = { infinite: !infinitePlay, status }
     if (isEmpty(audioList)) {
       const crtAudioList = free.list[0].audio_list
@@ -111,7 +116,7 @@ class Home extends Component {
       live,
       audio,
       audioList,
-      palyStatus,
+      playStatus,
       progress,
       infinitePlay,
     } = this.props
@@ -132,8 +137,8 @@ class Home extends Component {
 
     const currentAudio = audioList.find(a => a.id === audio)
     const freeProps = {
-      Header: <FreeHeader name={free.name} status={infinitePlay && palyStatus === config.PLAYING} onPlay={this.handleInfinitePlay} />,
-      Body: <FreeBody list={free.list} onItemClick={this.handleAudioToggle} progress={progress} playing={{ status: palyStatus, ...currentAudio }} />,
+      Header: <FreeHeader name={free.name} status={infinitePlay && playStatus === config.PLAYING} onPlay={this.handleInfinitePlay} />,
+      Body: <FreeBody list={free.list} onItemClick={this.handleAudioToggle} progress={progress} playing={{ status: playStatus, ...currentAudio }} />,
     }
 
     const bookRadioProps = {
@@ -170,7 +175,7 @@ class Home extends Component {
 }
 
 function mapStateToProps ({ home, player }) {
-  const { audio, audioList, status, progress, infinite } = player
+  const { audio, audioList, status, progress, infinite, visible } = player
   const {
     banner,
     hotSearch,
@@ -192,7 +197,8 @@ function mapStateToProps ({ home, player }) {
     scrollTop,
     audio,
     audioList,
-    palyStatus: status,
+    playStatus: status,
+    playerVisible: visible,
     infinitePlay: infinite,
     progress,
   }

@@ -20,5 +20,10 @@ export const icon = {
   down: '#icon-down',
   change: '#icon-change',
   pause2: '#icon-suspend',
+  people: '#icon-people',
+  flag: '#icon-flag',
+  createtask: '#icon-createtask',
+  browse: '#icon-browse',
+  task: '#icon-task',
 }
 

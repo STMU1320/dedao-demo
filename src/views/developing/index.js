@@ -2,7 +2,7 @@ import React from 'react'
 import { TipPage } from 'components'
 
 function ErrorPage () {
-  return <TipPage title="Error" detail="对不起！我们遇到了一些问题，点击页面返回。" />
+  return <TipPage title="开发中..." detail="服务暂未开放，请点击返回。" />
 }
 
 export default ErrorPage

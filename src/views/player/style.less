@@ -8,12 +8,12 @@
   z-index: 98;
 
   &.mini {
-    bottom: 4rem;
-    background-color: @bg-gray;
+    bottom: 5rem;
     color: @text-dark;
     height: 5rem;
     overflow: hidden;
     .miniContent {
+      background-color: @bg-gray;
       display: flex;
       height: 100%;
       align-items: center;
@@ -30,7 +30,7 @@
           margin-right: 1rem;
           border-radius: .2rem;
           object-fit: cover;
-          background-color: #666;
+          background-color: #999;
         }
         div {
           flex: 1;
@@ -55,10 +55,12 @@
   }
 
   &.playerPage {
-    height: 100vh;
-    top: 0;
-    background-color: white;
     z-index: 1000;
+  }
+  .pageWrap {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
   }
   .cover {
     position: relative;

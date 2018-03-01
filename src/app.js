@@ -8,6 +8,9 @@ import './reset.css'
 import './app.less'
 import './icon/iconfont'
 
+require('velocity-animate')
+require('velocity-animate/velocity.ui')
+
 const appRoot = document.createElement('div')
 appRoot.classList.add('app-root')
 document.body.appendChild(appRoot)

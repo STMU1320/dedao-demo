@@ -10,7 +10,7 @@ export default {
     progress: 0,
     mini: true,
     loading: false,
-    visible: true,
+    visible: false,
     infinite: false,
   },
 

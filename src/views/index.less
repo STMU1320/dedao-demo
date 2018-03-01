@@ -5,14 +5,22 @@
   bottom: 0;
   z-index: 99;
   width:100%;
-  height: 4rem;
+  height: 5rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
   margin: 0;
+  box-sizing: border-box;
   background-color: white;
   border-top: @border-1px;
-  li {
-    flex: 1;
-    text-align: center;
+
+  :global {
+    .active {
+      color: @primary;
+      .iconfont {
+        color: @primary;
+      }
+    }
   }
 }
