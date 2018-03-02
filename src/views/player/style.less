@@ -7,55 +7,62 @@
   box-sizing: border-box;
   z-index: 98;
 
+  video{
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
   &.mini {
     bottom: 5rem;
-    color: @text-dark;
-    height: 5rem;
-    overflow: hidden;
-    .miniContent {
-      background-color: @bg-gray;
-      display: flex;
-      height: 100%;
-      align-items: center;
-      justify-content: space-between;
-      .audioInfo {
-        flex: 1;
-        display: flex;
-        padding: 0 1rem;
-        align-items: center;
-        img {
-          display: block;
-          width: 3rem;
-          height: 3rem;
-          margin-right: 1rem;
-          border-radius: .2rem;
-          object-fit: cover;
-          background-color: #999;
-        }
-        div {
-          flex: 1;
-          overflow: hidden;
-        }
-        h4, p {
-          .ellipsis;
-          font-size: 1.2rem;
-        }
-        h4 {
-          font-weight: bold;
-        }
-      }
-      :global {
-        .iconfont {
-          padding: .5rem;
-          color: @text-light;
-          z-index: 2;
-        }
-      }
-    }
   }
 
   &.playerPage {
     z-index: 1000;
+    height: 100vh;
+  }
+
+  .miniContent {
+    color: @text-dark;
+    height: 5rem;
+    background-color: @bg-gray;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    .audioInfo {
+      flex: 1;
+      display: flex;
+      padding: 0 1rem;
+      align-items: center;
+      img {
+        display: block;
+        width: 3rem;
+        height: 3rem;
+        margin-right: 1rem;
+        border-radius: .2rem;
+        object-fit: cover;
+        background-color: #999;
+      }
+      div {
+        flex: 1;
+        overflow: hidden;
+      }
+      h4, p {
+        .ellipsis;
+        font-size: 1.2rem;
+      }
+      h4 {
+        font-weight: bold;
+      }
+    }
+    :global {
+      .iconfont {
+        padding: .5rem;
+        color: @text-light;
+        z-index: 2;
+      }
+    }
   }
   .pageWrap {
     width: 100vw;

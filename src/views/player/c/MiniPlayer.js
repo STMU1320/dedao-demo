@@ -27,7 +27,7 @@ export default function Mini ({
   return (
     <VelocityComponent
       component=""
-      animation={{ opacity: visible ? 1 : 0, translateY: visible ? '0rem' : '5rem' }}
+      animation={{ opacity: visible ? 1 : 0, bottom: visible ? '0rem' : '-5rem' }}
       duration={500}
     >
       <div className={styles.miniContent}>

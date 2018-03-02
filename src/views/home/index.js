@@ -54,7 +54,7 @@ class Home extends Component {
     this.sectionHook = dom
   };
   handleScroll (top) {
-    const { dispatch, lastArea, playerVisible, scrollTop } = this.props
+    const { dispatch, lastArea, playerVisible, scrollTop, audio } = this.props
     const bHeight = this.banner.offsetHeight
     if (top < bHeight) {
       this.setState({
@@ -69,7 +69,7 @@ class Home extends Component {
     }
     if (top - scrollTop > 50 && playerVisible) {
       dispatch({ type: 'player/save', payload: { visible: false } })
-    } else if (top - scrollTop < -50 && !playerVisible) {
+    } else if (top - scrollTop < -50 && !playerVisible && !isEmpty(audio)) {
       dispatch({ type: 'player/save', payload: { visible: true } })
     }
   }
