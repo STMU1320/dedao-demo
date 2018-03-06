@@ -11,7 +11,7 @@ import ErrorPage from 'bundle-loader?lazy&name=error!./error'
 import NotFound from 'bundle-loader?lazy&name=notfound!./404'
 import Developing from 'bundle-loader?lazy&name=developing!./developing'
 import Loading from 'components/Loading'
-import Home from './home'
+import Home from 'bundle-loader?lazy&name=home!./home'
 
 import Bundle from './Bundle'
 import styles from './index.less'
@@ -80,7 +80,7 @@ const navData = [
 const appRoutes = [
   {
     path: '/',
-    Component: Home,
+    Component: createComponent(Home),
     exact: true,
   },
   {

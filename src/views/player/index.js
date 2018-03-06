@@ -95,8 +95,18 @@ class PlayBar extends React.Component {
     } else {
       document.body.style.overflow = 'hidden'
     }
-    dispatch({ type: 'player/save', payload: { mini: !mini } })
+    dispatch({ type: 'player/save', payload: { mini: !mini, dialogVisible: false } })
   };
+
+  handleShowDialog = dialogType => {
+    const { dispatch } = this.props
+    dispatch({ type: 'player/save', payload: { dialogType, dialogVisible: true } })
+  }
+
+  handleCloseDialog = () => {
+    const { dispatch } = this.props
+    dispatch({ type: 'player/save', payload: { dialogType: '', dialogVisible: false } })
+  }
 
   handleChangeCrtTime = disTime => {
     const { audio } = this.props
@@ -109,6 +119,11 @@ class PlayBar extends React.Component {
       this.handlePlay()
     }
   };
+
+  handleAudioChange = ({ id }) => {
+    const { dispatch } = this.props
+    dispatch({ type: 'player/save', payload: { audio: id, status: config.PLAYING, progress: 0 } })
+  }
   render () {
     const {
       mini,
@@ -118,6 +133,7 @@ class PlayBar extends React.Component {
       status,
       visible,
       progress,
+      dialogVisible,
     } = this.props
     const currentAudio = audioList.find(a => a.id === audio) || {}
     const audioIndex = audioList.findIndex(a => a.id === audio) || 0
@@ -141,7 +157,11 @@ class PlayBar extends React.Component {
         <PlayerPage
           {...playerProps}
           visible={visible && !mini}
+          dialogVisible={dialogVisible && visible && !mini}
+          onOpenDialog={this.handleShowDialog}
+          onCloseDialog={this.handleCloseDialog}
           onAudioToggle={this.handlePlayToggle}
+          onAudioChange={this.handleAudioChange}
           onChangeCrtTime={this.handleChangeCrtTime}
         />
         <video

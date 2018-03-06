@@ -1,0 +1,60 @@
+@import '../../theme/mixin.less';
+
+.listView {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  background-color: white;
+
+  .listTitle {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-bottom: @border-1px;
+    font-size: 2rem;
+    font-weight: normal;
+    z-index: 9;
+    :global {
+      .iconfont {
+        position: absolute;
+        left: .5rem;
+      }
+    }
+  }
+
+  .listBody {
+    flex: 1;
+    overflow: scroll;
+    -webkit-overflow-scrolling:touch;
+  }
+  .listItem {
+    display: flex;
+    align-items: center;
+    border-bottom: @border-1px;
+    padding: .5rem;
+
+    &.active {
+      color: @primary
+    }
+    .icon {
+      margin-right: .5rem;
+      color: @text-light;
+    }
+    .listItemContent {
+      flex: 1;
+      .detail {
+        color: @text-light;
+      }
+    }
+  }
+}

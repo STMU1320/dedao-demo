@@ -9,5 +9,7 @@ import PlayButton from './PlayButton'
 import Progress from './Progress'
 import Button from './Button'
 import TipPage from './TipPage'
+import Dialog from './Dialog'
+import ListView from './ListView'
 
-export { Container, Icon, Layout, Loading, Search, SearchInput, Section, PlayButton, Progress, Button, TipPage }
+export { Container, Icon, Layout, Loading, Search, SearchInput, Section, PlayButton, Progress, Button, TipPage, Dialog, ListView }

@@ -8,12 +8,16 @@
   height: 5rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 1rem;
   margin: 0;
   box-sizing: border-box;
   background-color: white;
   border-top: @border-1px;
+
+  li {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
 
   :global {
     .active {

@@ -18,13 +18,15 @@
   }
 
   &.playerPage {
-    z-index: 1000;
+    top: 0;
     height: 100vh;
+    z-index: 1000;
   }
 
   .miniContent {
     color: @text-dark;
     height: 5rem;
+    width: 100%;
     background-color: @bg-gray;
     display: flex;
     align-items: center;
@@ -129,13 +131,16 @@
         left: 0;
         display: flex;
         span {
+          display: block;
           position: absolute;
-          top: -.7rem;
+          top: -0.7rem;
           padding: .2rem .5rem;
           border-radius: 0.7rem;
           background-color: rgba(0, 0, 0, .8);
           color: white;
           font-size: 1rem;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
       }
       .changeBtn {

@@ -12,6 +12,8 @@ export default {
     loading: false,
     visible: false,
     infinite: false,
+    dialogVisible: false,
+    dialogType: 'playerList',
   },
 
   effects: {
