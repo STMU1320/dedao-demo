@@ -105,7 +105,7 @@ class PlayBar extends React.Component {
 
   handleCloseDialog = () => {
     const { dispatch } = this.props
-    dispatch({ type: 'player/save', payload: { dialogType: '', dialogVisible: false } })
+    dispatch({ type: 'player/save', payload: { dialogVisible: false } })
   }
 
   handleChangeCrtTime = disTime => {
@@ -121,8 +121,19 @@ class PlayBar extends React.Component {
   };
 
   handleAudioChange = ({ id }) => {
-    const { dispatch } = this.props
-    dispatch({ type: 'player/save', payload: { audio: id, status: config.PLAYING, progress: 0 } })
+    const { dispatch, status, audio, progress } = this.props
+    let newStatus = config.PLAYING
+    let newProgress = 0
+    if (id === audio) {
+      newProgress = progress
+      if (status === config.PLAYING) newStatus = config.PAUSE
+    }
+    dispatch({ type: 'player/save', payload: { audio: id, status: newStatus, progress: newProgress } })
+  }
+
+  handelGetDocment = docmentId => {
+    this.handleShowDialog('docment')
+    this.props.dispatch({ type: 'player/getDocment', payload: { docmentId } })
   }
   render () {
     const {
@@ -134,6 +145,8 @@ class PlayBar extends React.Component {
       visible,
       progress,
       dialogVisible,
+      dialogType,
+      docment,
     } = this.props
     const currentAudio = audioList.find(a => a.id === audio) || {}
     const audioIndex = audioList.findIndex(a => a.id === audio) || 0
@@ -157,7 +170,10 @@ class PlayBar extends React.Component {
         <PlayerPage
           {...playerProps}
           visible={visible && !mini}
+          dialogType={dialogType}
           dialogVisible={dialogVisible && visible && !mini}
+          getAudioDocment={this.handelGetDocment}
+          docment={docment}
           onOpenDialog={this.handleShowDialog}
           onCloseDialog={this.handleCloseDialog}
           onAudioToggle={this.handlePlayToggle}
@@ -168,6 +184,7 @@ class PlayBar extends React.Component {
           ref={this.getvideoEle}
           height="0"
           width="0"
+          webkit-playsinline="true"
           onEnded={this.handlePlayEnded}
           onError={this.handlePlayEnded}
         />

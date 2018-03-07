@@ -54,7 +54,7 @@ class Home extends Component {
     this.sectionHook = dom
   };
   handleScroll (top) {
-    const { dispatch, lastArea, playerVisible, scrollTop, audio } = this.props
+    const { dispatch, lastArea, playerVisible, scrollTop, audio, isMini } = this.props
     const bHeight = this.banner.offsetHeight
     if (top < bHeight) {
       this.setState({
@@ -67,10 +67,12 @@ class Home extends Component {
     ) {
       dispatch({ type: 'home/getLastArea' })
     }
-    if (top - scrollTop > 50 && playerVisible) {
-      dispatch({ type: 'player/save', payload: { visible: false } })
-    } else if (top - scrollTop < -50 && !playerVisible && !isEmpty(audio)) {
-      dispatch({ type: 'player/save', payload: { visible: true } })
+    if (isMini) {
+      if (top - scrollTop > 50 && playerVisible) {
+        dispatch({ type: 'player/save', payload: { visible: false } })
+      } else if (top - scrollTop < -50 && !playerVisible && !isEmpty(audio)) {
+        dispatch({ type: 'player/save', payload: { visible: true } })
+      }
     }
   }
 
@@ -175,7 +177,7 @@ class Home extends Component {
 }
 
 function mapStateToProps ({ home, player }) {
-  const { audio, audioList, status, progress, infinite, visible } = player
+  const { audio, audioList, status, progress, infinite, visible, mini } = player
   const {
     banner,
     hotSearch,
@@ -200,6 +202,7 @@ function mapStateToProps ({ home, player }) {
     playStatus: status,
     playerVisible: visible,
     infinitePlay: infinite,
+    isMini: mini,
     progress,
   }
 }

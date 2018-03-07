@@ -22,9 +22,12 @@ export default function Page ({
   audioList,
   visible,
   dialogVisible,
+  dialogType,
   onOpenDialog,
   onCloseDialog,
   onAudioChange,
+  getAudioDocment,
+  docment,
 }) {
   const detail = audio.audio_detail || {}
   const statusIcon = status === config.PLAYING
@@ -49,11 +52,56 @@ export default function Page ({
   const changeAudio = newAudio => {
     onAudioChange(newAudio)
   }
+
+  const playerListPage = (
+    <ListView
+      style={{ width: '100vw', height: '100vh' }}
+      listData={audioList.map(audioItem => {
+        const audioDetail = audioItem.audio_detail
+        const isActive = audio.id === audioItem.id
+        const iconStatus = status === config.PLAYING && isActive
+        return {
+          title: audioDetail.title,
+          detail: audioDetail.share_title,
+          id: audioItem.id,
+          active: isActive,
+          icon: (
+            <PlayButton
+              status={iconStatus}
+              active={isActive}
+              progress={isActive ? progress : 0}
+              style={{ marginRight: '.5rem' }}
+            />
+          ),
+        }
+      })}
+      title="音频列表"
+      onItemClick={changeAudio}
+      onBack={onCloseDialog}
+    />
+  )
+  /* eslint-disable react/no-danger */
+  const playerDocmentPage = (<div className={styles.docmentPage}>
+    <h4 className={styles.titleBar}>
+      <Icon onClick={onCloseDialog} type={config.icon.arrow} style={{ transform: 'rotate(180deg)' }} />
+      <Icon type={config.icon.share} />
+    </h4>
+    {/* <iframe dangerouslySetInnerHTML={{ __html: docment.content }} title="docment" frameBorder="0" /> */}
+    <div className={styles.content} dangerouslySetInnerHTML={{ __html: docment.content }} />
+  </div>)
+
+  const dialogContent = dialogType === 'playerList'
+    ? playerListPage
+    : playerDocmentPage
+
   return (
     <React.Fragment>
       <VelocityComponent
         component=""
-        animation={{ opacity: visible ? 1 : 0.5, translateY: visible ? '0vh' : '100vh' }}
+        animation={{
+          opacity: visible ? 1 : 0.5,
+          translateY: visible ? '0vh' : '100vh',
+        }}
         duration={500}
       >
         <div className={styles.pageWrap}>
@@ -109,7 +157,9 @@ export default function Page ({
               >
                 <Icon type={statusIcon} />
               </a>
-              <a className={styles.circle} onClick={nextAudio}><Icon type={config.icon.arrow} /></a>
+              <a className={styles.circle} onClick={nextAudio}>
+                <Icon type={config.icon.arrow} />
+              </a>
               <a
                 className={styles.changeBtn}
                 onClick={onChangeCrtTime.bind(null, 15)}
@@ -123,7 +173,13 @@ export default function Page ({
                 onClick={onOpenDialog.bind(this, 'playerList')}
                 icon={config.icon.list}
               >{`${audioIndex + 1}/${audioList.length}`}</Button>
-              <Button type="nav" icon={config.icon.document}>文稿</Button>
+              <Button
+                type="nav"
+                onClick={getAudioDocment.bind(this, detail.alias_id)}
+                icon={config.icon.document}
+              >
+                文稿
+              </Button>
               <Button type="nav" icon={config.icon.like}>1320</Button>
               <Button type="nav" icon={config.icon.download2}>下载</Button>
               <Button type="nav" icon={config.icon.share}>分享</Button>
@@ -137,22 +193,7 @@ export default function Page ({
         setOverflow={false}
         onClose={onCloseDialog}
       >
-        <ListView
-          style={{ width: '100vw', height: '100vh' }}
-          listData={audioList.map(audioItem => {
-            const audioDetail = audioItem.audio_detail
-            const iconStatus = status === config.PLAYING && audio.id === audioItem.id
-            return {
-              title: audioDetail.title,
-              detail: audioDetail.share_title,
-              id: audioItem.id,
-              active: audio.id === audioItem.id,
-              icon: <PlayButton status={iconStatus} progress={audio.id === audioItem.id ? progress : 0} style={{ marginRight: '.5rem' }} />,
-            }
-           })}
-          title="音频列表"
-          onItemClick={changeAudio}
-          onBack={onCloseDialog} />
+        {dialogContent}
       </Dialog>
     </React.Fragment>
   )

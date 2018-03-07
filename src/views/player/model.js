@@ -1,5 +1,5 @@
-// import { home } from 'api'
-import { config } from 'utils'
+import { getDocment } from 'api'
+import { config, history } from 'utils'
 
 export default {
   namespace: 'player',
@@ -14,17 +14,21 @@ export default {
     infinite: false,
     dialogVisible: false,
     dialogType: 'playerList',
+    docment: {},
   },
 
   effects: {
-    // *getLastArea ({ call, put }) {
-    //   try {
-    //     const { c } = yield call(home.getLastArea)
-    //     yield put({ type: 'home/save', payload: { lastArea: c.list } })
-    //   } catch (error) {
-    //     history.push('error')
-    //   }
-    // },
+    *getDocment ({ call, put }, { payload: { docmentId } }) {
+      yield put({ type: 'player/save', payload: { loading: true } })
+      try {
+        const { c } = yield call(getDocment, docmentId)
+        yield put({ type: 'player/save', payload: { docment: c.content } })
+      } catch (error) {
+        history.push('error')
+      } finally {
+        yield put({ type: 'player/save', payload: { loading: false } })
+      }
+    },
   },
 
   reducers: {

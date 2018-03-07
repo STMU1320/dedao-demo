@@ -109,7 +109,13 @@
     line-height: 3rem;
     align-items: center;
     color: @text-light;
-    .ellipsis
+    .ellipsis;
+    :global .iconfont {
+      color: @text-light;
+    }
+    &.active {
+      color: @primary;
+    }
   }
 }
 

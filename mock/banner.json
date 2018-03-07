@@ -2,48 +2,73 @@
 	"h": {
 		"c": 0,
 		"e": "",
-		"t": 0.041070938110352,
-		"s": 1508844102
+		"s": 1520326622,
+		"t": 0
 	},
 	"c": {
 		"list": [{
-			"m_type": 3,
-			"m_title": "\u3010banner\u3011\u5f97\u5230\u79d1\u6280\u767d\u76ae\u4e66",
-			"m_img": "https:\/\/piccdn.igetget.com\/img\/201710\/23\/201710232212068469141692.jpg",
-			"m_img_new": "https:\/\/piccdn.igetget.com\/img\/201710\/23\/201710232212068469141692.jpg",
-			"m_url": "https:\/\/zt.igetget.com\/h5\/pic\/?alias=Ng9pN0woyPTYZAMPmY7Z&spm=appsylbt",
-			"m_id": 0,
-			"m_from": "",
-			"log_id": 1419,
+			"log_id": 1876,
+			"log_interface": "kaleidoscope:StructDataServcie",
 			"log_type": "activity",
+			"m_from": "",
+			"m_id": 0,
+			"m_img": "https://piccdn.igetget.com/img/201803/06/201803061450259994508846.jpg",
+			"m_img_new": "https://piccdn.igetget.com/img/201803/06/201803061450259994508846.jpg",
+			"m_img_old": "https://piccdn.igetget.com/img/201803/06/201803061450227563598342.jpg",
+			"m_title": "【banner】从知识的角度发奥斯卡奖",
+			"m_type": 3,
+			"m_url": "https://pic1cdn.luojilab.com/html/poster/pic3g6DYxOWAVFzWmgAp587.html?spm=appsylbt",
 			"operation_key": {
-				"resource_key": 1419
+				"resource_id": 1876,
+				"resource_key": "topbanner"
 			}
 		}, {
-			"m_type": 3,
-			"m_title": "\u3010banner\u3011\u5b81\u5411\u4e1c\u76f4\u64ad",
-			"m_img": "https:\/\/piccdn.igetget.com\/img\/201710\/23\/201710232213002596434446.jpg",
-			"m_img_new": "https:\/\/piccdn.igetget.com\/img\/201710\/23\/201710232213002596434446.jpg",
-			"m_url": "https:\/\/zt.igetget.com\/h5\/pic\/?alias=KNZmPpjL7RSQAv8yMzz9&spm=appsylbt",
-			"m_id": 0,
-			"m_from": "",
-			"log_id": 1420,
+			"log_id": 1874,
+			"log_interface": "kaleidoscope:StructDataServcie",
 			"log_type": "activity",
+			"m_from": "",
+			"m_id": 0,
+			"m_img": "https://piccdn.igetget.com/img/201803/05/201803051945132840382335.jpg",
+			"m_img_new": "https://piccdn.igetget.com/img/201803/05/201803051945132840382335.jpg",
+			"m_img_old": "https://piccdn.igetget.com/img/201803/05/201803051945097627608098.png",
+			"m_title": "大：罗辑思维第六季",
+			"m_type": 3,
+			"m_url": "https://pic1cdn.luojilab.com/html/poster/picrr2xrYEDwnFpv53DpRME.html?spm=appsylbt",
 			"operation_key": {
-				"resource_key": 1420
+				"resource_id": 1874,
+				"resource_key": "topbanner"
 			}
 		}, {
-			"m_type": 3,
-			"m_title": "\u5927\uff1a16\u79cd\u4e2d\u56fd\u5f0f\u5173\u7cfb\u6e05\u5355",
-			"m_img": "https:\/\/piccdn.igetget.com\/img\/201710\/20\/201710201827394816889123.jpg",
-			"m_img_new": "https:\/\/piccdn.igetget.com\/img\/201710\/20\/201710201827394816889123.jpg",
-			"m_url": "https:\/\/zt.igetget.com\/h5\/pic\/?alias=Rmo8nKqk03IORz4LRZ9D&spm=appsylbt",
-			"m_id": 0,
-			"m_from": "",
-			"log_id": 1411,
+			"log_id": 1869,
+			"log_interface": "kaleidoscope:StructDataServcie",
 			"log_type": "activity",
+			"m_from": "",
+			"m_id": 0,
+			"m_img": "https://piccdn.igetget.com/img/201803/04/201803041518328438233327.jpg",
+			"m_img_new": "https://piccdn.igetget.com/img/201803/04/201803041518328438233327.jpg",
+			"m_img_old": "https://piccdn.igetget.com/img/201803/04/201803041518294178394695.jpg",
+			"m_title": "【banner】哲学专栏上新",
+			"m_type": 3,
+			"m_url": "https://pic1cdn.luojilab.com/html/poster/pic1O6OoBQ2XVcogL2kpQEE.html?spm=appsylbt",
 			"operation_key": {
-				"resource_key": 1411
+				"resource_id": 1869,
+				"resource_key": "topbanner"
+			}
+		}, {
+			"log_id": 1873,
+			"log_interface": "kaleidoscope:StructDataServcie",
+			"log_type": "activity",
+			"m_from": "",
+			"m_id": 0,
+			"m_img": "https://piccdn.igetget.com/img/201803/05/201803051816046158892953.jpg",
+			"m_img_new": "https://piccdn.igetget.com/img/201803/05/201803051816046158892953.jpg",
+			"m_img_old": "https://piccdn.igetget.com/img/201803/05/201803051816019681787827.jpg",
+			"m_title": "大：3.8特别策划（1）-护肤",
+			"m_type": 3,
+			"m_url": "https://pic1cdn.luojilab.com/html/poster/piczD6JgKZLGXi0nE3m141w.html?spm=appsylbt",
+			"operation_key": {
+				"resource_id": 1873,
+				"resource_key": "topbanner"
 			}
 		}]
 	}

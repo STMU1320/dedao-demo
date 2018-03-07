@@ -24,6 +24,10 @@ router.get('/api/getLastArea', function *(next) {
   this.body = require('./lastArea.json')
 })
 
+router.get('/api/getDocment', function *(next) {
+  this.body = require(`./docment/${this.query.id}.json`)
+})
+
 router.post('/api/post', koaBody, function *(next) {
   this.body = JSON.stringify(this.request.body)
 })
